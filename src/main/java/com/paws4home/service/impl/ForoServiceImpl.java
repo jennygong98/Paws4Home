@@ -26,7 +26,7 @@ public class ForoServiceImpl implements ForoService {
       }
 
       public Foro getForo(Foro foro) {
-	   return foroDao.findById(foro.getIdForo()).orElse(null);
+	   return foroDao.findById(foro.getCodForo()).orElse(null);
       }
 
       @Override

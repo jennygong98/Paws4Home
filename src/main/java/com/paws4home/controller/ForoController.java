@@ -24,7 +24,7 @@ public class ForoController {
 	   List<Foro> listadoForos = foroService.getForos(false);
 	   model.addAttribute("foros", listadoForos);
 	   model.addAttribute("totalForos", listadoForos.size());
-	   return "/foo/listadoForo";
+	   return "/foro/listadoForo";
       }
 
       @GetMapping("/nuevo")
