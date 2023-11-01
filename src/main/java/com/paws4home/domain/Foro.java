@@ -14,25 +14,23 @@ import lombok.Data;
 @Table(name = "foro")
 public class Foro implements Serializable {
 
-               public static final long serialVersionUID = 1L;
-               @Id
-               @GeneratedValue(strategy = GenerationType.IDENTITY)
-               @Column(name = "cod_foro")
-               private long codForo;
-               private String descripcion;
-               private int idUsuario;
-               private int comentario;
-               private boolean activo;
+    public static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_foro")
+    private long idForo;
+    private String comentario;
+    private String usuario;
 
-               public Foro() {
-               }
+    public Foro() {
+    }
 
-               public Foro(String descripcion, int idUsuario, int comentario, boolean activo) {
+    public Foro(long idForo, String comentario, String usuario) {
+        this.idForo = idForo;
+        this.comentario = comentario;
+        this.usuario = usuario;
+    }
 
-                              this.descripcion = descripcion;
-                              this.idUsuario = idUsuario;
-                              this.comentario = comentario;
-                              this.activo = activo;
-               }
+  
 
 }

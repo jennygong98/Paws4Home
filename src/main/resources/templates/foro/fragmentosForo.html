@@ -11,7 +11,7 @@
                <div th:each="foro : ${foros}">
                     <div class="card" style="width: 60%;">
                          <div class="card-body">
-                              <h5 class="card-title" th:text="${foro.descripcion}">Title</h5>
+                              <h5 class="card-title" th:text="${foro.comentario}">Title</h5>
                               <p class="card-text" th:text="${forum.content}">Content</p>
                               <a href="#" class="btn btn-primary">Read More</a>
                               <a href="#" class="btn btn-danger">Delete</a>
@@ -66,18 +66,15 @@
                                              <tr>
                                                   <th>#</th>
                                                   <th>Descripcion</th>
-                                                  <th>Activo</th>
                                                   <th>Comentarios</th>
                                                   <th>Publicado por</th>
                                              </tr>
                                         </thead>
                                         <tbody>
-                                             <tr th:each="foro, contador : ${foro}">
+                                             <tr th:each="foro, contador : ${foros}">
                                                   <td>[[${contador.count}]]</td>
-                                                  <td>[[${foro.descripcion}]]</td>
-                                                  <td th:text="${foro.activo} ? 'Activo' : 'Inactivo'"></td>
-                                                  <td>[[${foro.comentarios}]]</td>
-                                                  <td>[[${foro.idUsuario}]]</td>
+                                                  <td>[[${foro.comentario}]]</td>
+                                                  <td>[[${foro.usuario}]]</td>
                                              </tr>
                                         </tbody>
                                    </table>

@@ -18,9 +18,7 @@ public class SugerenciaServiceImpl implements SugerenciaService {
     @Transactional(readOnly = true)
     public List<Sugerencia> getSugerencia(boolean activos) {
         List<Sugerencia> sugerencia = sugerenciaDao.findAll();
-        if (activos) {
-            sugerencia.removeIf(e -> !e.isActivo());
-        }
+        
         return sugerencia;
     }
 

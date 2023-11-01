@@ -19,15 +19,13 @@ public class ForoServiceImpl implements ForoService {
      @Transactional(readOnly = true)
      public List<Foro> getForos(boolean activos) {
           List<Foro> foros = foroDao.findAll();
-          if (activos) {
-               foros.removeIf(foro -> !foro.isActivo());
-          }
+          
           return foros;
      }
 
      @Override
      public Foro getForo(Foro foro) {
-          return foroDao.findById(foro.getCodForo()).orElse(null);
+          return foroDao.findById(foro.getIdForo()).orElse(null);
      }
 
      @Override

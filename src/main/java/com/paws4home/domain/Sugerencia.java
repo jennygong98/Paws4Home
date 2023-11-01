@@ -11,27 +11,22 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name= "sugerencia")
+@Table(name = "sugerencia")
 public class Sugerencia implements Serializable {
-   
+
     public static final long serialVersionUID = 1L;
-    
+
     @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
-      @Column(name = "id_sugerencia")
-      private long idSugerencia;
-      private String comentario;
-      private boolean activo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_sugerencia")
+    private Long idSugerencia;
+    private String comentario;
 
     public Sugerencia() {
     }
 
-    public Sugerencia(String comentario, boolean activo) {
+    public Sugerencia(String comentario) {
         this.comentario = comentario;
-        this.activo = activo;
     }
-      
-      
+
 }
-
-
