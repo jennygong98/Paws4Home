@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="htttp://www.w3.org.1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-      <head th:replace="layout/plantilla :: head"></head>
-      <body>
+               <head th:replace="layout/plantilla :: head"></head>
+               <body>
 
-	   <header th:replace="layout/plantilla :: header"></header>
-	   <section th:replace="foro/fragmentosForo :: ejemploForo"/>
+                              <header th:replace="layout/plantilla :: header"></header>
+                              <section th:replace="foro/fragmentosForo :: listadoForos"/>
+                              <section th:replace="foro/fragmentosForo :: botonAgregar"/>
 
+                              <!--<section th:replace="categoria/fragmentosCategoria :: botonesAgregar"/>
+                              <section th:replace="categoria/fragmentosCategoria :: agregarCategoria"/>-->
+                              <footer th:replace="layout/plantilla :: footer"></footer>
 
-	   <!--<section th:replace="categoria/fragmentosCategoria :: botonesAgregar"/>
-	   <section th:replace="categoria/fragmentosCategoria :: agregarCategoria"/>-->
-	   <footer th:replace="layout/plantilla :: footer"></footer>
-
-      </body>
+               </body>
 
 
 </html>
