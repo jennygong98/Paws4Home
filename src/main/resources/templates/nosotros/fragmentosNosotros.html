@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      xmlns:th="http://www.thymeleaf.org">
+     <head th:replace="~{layout/plantilla :: head}">
+          <title>Página de Inicio</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     </head>
+     <body>
+
+          <div class="container">
+               <h2>Bienvenido a nuestra página</h2>
+               <p>Esta es una plantilla básica de Thymeleaf con Bootstrap.</p>
+
+               <div class="card" style="width: 18rem;">
+                    <img th:src="@{img.jpg}" class="card-img-top" alt="Imagen">
+                         <div class="card-body">
+                              <h5 class="card-title">Título de la tarjeta</h5>
+                              <p class="card-text">Descripción de la tarjeta.</p>
+                              <a href="#" class="btn btn-primary">Ir a algún lugar</a>
+                         </div>
+               </div>
+
+          </div>
+
+     </body>
+</html>
