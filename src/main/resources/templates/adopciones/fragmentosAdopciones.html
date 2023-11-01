@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <link href="../../static/styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+
+        <!-- fragmento mensaje inicial pagina adopciones -->
+        <div th:fragment="banner">
+            <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 98%; background-size: cover; background-position: center; height: 300px; 
+                     display: grid; align-items: center; border-bottom-right-radius: 200px">
+                <section class="text-white mt-5" style="padding-left: 50px">
+                    <h3>ENCUENTRA A TU ALMA GEMELA</h3>
+                    <h2 style="margin-left: 120px; font-weight: bold">Adopciones</h2>
+                </section>
+                <section class="row flex-wrap">
+                    <div class="col-sm-4 col-lg-2" style="margin-left: 40px">
+                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style= "background-color: #ED7333; height: 60px; width: 150px">
+                            <i class="fas  "></i> Visitanos
+                        </a>
+                    </div>
+                    <div class="col-sm-4 col-lg-2 " style="margin-left: 40px;">
+                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style= "background-color: #F5B333; height: 60px; width: 150px">
+                            <i class="fas"></i> Haz una donacion
+                        </a>
+                    </div>
+                </section>
+            </section>
+        </div>
+
+        <!-- fragmento texto sobre paws4home pagina principal adopciones-->
+        <div th:fragment="description" class="container-fluid text-center my-5 d-flex justify-content-center align-items-center flex-column">
+            <label> ¿ESTÁS EN BUSQUEDA DE UN PELUDITO?</label>
+            <h3>En Paws4Home tenemos muchos buscando un hogar  </h3>
+            <p>Nos alegra sabe que estas pensando en adoptar, todos nuestros peludos están a la espera de una familia y son entregados en óptimas condiciones de salud y belleza a adoptantes responsables y amorosos. </p>
+            <p>En esta página conocerás nuestro proceso de adopción y requisitos, pero lo primero es conocer al peludo que deseas adoptar, si ya tienes su nombre sigue leyendo nuestras condiciones, de lo contrario puedes conocer todos nuestros peluditos en los siguientes links. </p>
+            <div class="text-center">
+                <a th:href="@{/adopciones/mascotas}" class="btn btn-md fas text-white" style= "background-color: #96B921; height: 60px; width: 250px; display: flex; justify-content: center; align-items: center;">
+                    <i class="fas"></i> Peluditos adoptables
+                </a>
+            </div>
+        </div>
+
+        <!-- fragmento texto requisitos pagina adopciones -->
+        <div th:fragment="requirements" class="container-fluid my-5 text-white p-5" style="background-color: #333333; text-align: left; text-justify: inter-word;
+             border-top-left-radius: 150px; border-bottom-right-radius: 200px;">
+            <h3> REQUISITOS PARA ADOPTANTES </h3>
+            <label>Nos encantaría poder entregar un peludito a cada persona que desee adoptar, pero la gran responsabilidad que sentimos con nuestros ángeles nos obliga a tener unos requisitos mínimos que nos permitan tener cierta seguridad en que los hogares donde llegarán serán los definitivos.</label>
+            <p><br>💛 La persona responsable del peludito debe ser mayor de 25 años.<br>
+                        💛 Este o esta pequeñita será miembro de la familia alrededor de 15 años.<br>
+                            💛 Diligencia el Pre-formulario de Adopción <br>
+                                💛 Los datos ingresados serán verificados por funcionarios de la Fundación (esta verificación tarda 3 días hábiles).<br>
+                                    💛 Si tu solicitud y todo está en orden, nos contactaremos contigo para coordinar el día en que el peludito que escogiste llegue a tu casa.<br>
+                                        💛 Por tema del Coronavirus no podemos hacer la visita domiciliaria, por eso te pedimos que grabes un video del lugar donde vivirá el peludito <br>
+                                            💛 Es importante tener el tiempo y el espacio para que tú y ellos estén muy bien.<br>
+                                                💛 Es importante contar con estabilidad económica, desde el primer momento que llegue a tus manos será una gran responsabilidad y requerirá de muchos cuidados y mimos para vivir feliz. Recuerda, todos han sido rescatados.<br>
+                                                    🚫 Si vives en una zona de sobrepoblación canina o felina, te pedimos adoptes tú mismo a uno de la calle, se tú el salvador de ese peludito, así juntos podremos salvar más vidas!!<br>
+                                                        ⚠️ Se deben cumplir los compromisos y obligaciones que figuran en el Contrato de Adopción.<br>
+                                                            ⚠️Seguimos en constante seguimiento y comunicación para saber cómo va todo. Ellos siempre serán nuestros hijitos.</p>
+        </div>
+
+
+        <!-- fragmento info/botón pre-formulario de adopción pagina principal-->
+        <div th:fragment="formButton" class="container-fluid my-5 p-5" >
+            <label>¿ESTÁS LIST@?</label>
+            <h2>ANTES DE APLICAR</h2>
+            <p>👉 Si estás interesad@ en adoptar a alguno de nuestros peluditos, antes de diligenciar el pre-formulario debes leer con detenimiento cada una de las siguientes preguntas frecuentes:</p>
+            <div class="text-center">
+                <a th:href="@{#}" class="btn btn-md fas text-white bg-warning" style= "height: 60px; width: 350px; display: flex; justify-content: center; align-items: center;">
+                    <i class="fas"></i> PRE-FORMULARIO DE ADOPCIÓN
+                </a>
+            </div>
+        </div>
+        
+        <!-- reflexiones con imagen de fondo -->
+        <div th:fragment="data" class="container-fluid text-center my-5" style="background-image: url('/imagenes/imagenGato.jpg'); max-width: 98%; background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; justify-content: center; border-bottom-right-radius: 200px; position: relative; overflow: hidden;">
+
+        <section class="text-white m-5" style="background-color: #ED7333; max-width: 50%; left: 0; height: 140px; width: 450px">
+            <h4>“Muchos animales necesitan un hogar”</h4>
+            <label>ADOPTA, dales una oportunidad y serán tus amigos fieles en todo momento ¡No te arrepentirás!</label>
+        </section>
+
+        <section class="text-white m-5" style="background-color: #96B921;max-width: 50%; right: 0; height: 140px; width: 450px">
+            <h4>Hemos rescatado más de 550 Peludos</h4>
+            <label>Cada adopción garantiza la oportunidad de ayuda a otro peludo de la calle.</label>
+        </section>
+
+        </div>
+        
+        <!-- fragmento banner inicial pagina mascotas -->
+        <div th:fragment="bannerPets">
+            <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 98%;
+                     background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; border-bottom-right-radius: 200px">
+                <section class="text-white p-5" style="flex: 1;">
+                    <h4>ENCUENTRA</h4>
+                    <h2 style="font-weight: bold;">Tu amigo peludo</h2>
+                </section>
+            </section>
+        </div>
+        
+        <!-- fragmento texto descriptivo pagina mascotas -->
+        <div th:fragment="textPets" class="container text-center my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h3>Lista de peluditos en adopción</h3>
+                    <p>Estos son nuestros ángeles que buscan poder encontrar su hogar para siempre. Una vez escojas al peludito que quisieras adoptar, vuelve a la página de adopción, lee cuidadosamente nuestros requisitos, proceso de adopción y por último, rellena el formulario de adopción.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- html que muestra mascotas disponibles para adoptar -->
+        <section th:fragment="cards" style="width: 18rem; display: grid; grid-template-columns: repeat(3, 1fr);
+                            grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;">
+            <div th:each="mascota : ${mascotas}"  class="card shadow border" >
+                <img th:src="${mascota.rutaImagen}" class="card-img-top" alt="Imagen de mascota" style="width: 100%; height: auto; margin: 0 auto">
+                    <div  class="card-body text-center" >
+                        <h5 th:text="${mascota.nombre}" class="card-title" ></h5>
+                        <p class="card-text">Edad: <span th:text="${mascota.edad}"></span></p>
+                        <a th:href="@{/adopciones/nuevo/}+${mascota.idMascota}" class="btn btn-success">Adoptar</a>
+                    </div>
+            </div>
+        </section>
+        
+       
+        
+    </body>
+</html>

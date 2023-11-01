@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/plantilla :: head">
+        <link href="../../static/styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <section th:replace="adopciones/fragmentosAdopciones :: banner" />
+        
+        <section th:replace="adopciones/fragmentosAdopciones :: description" />
+        
+        <section th:replace="adopciones/fragmentosAdopciones :: requirements" />
+        
+        <section th:replace="adopciones/fragmentosAdopciones :: formButton" />
+        
+        <section th:replace="adopciones/fragmentosAdopciones :: data" />
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+
+    </body>
+
+</html>
