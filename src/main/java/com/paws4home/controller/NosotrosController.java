@@ -15,16 +15,12 @@ public class NosotrosController {
     @Autowired
     private SugerenciaService sugerenciaService;
 
-    @GetMapping("/nosotros")
-    public String inicio(Model model) {
-        List<Sugerencia> listadoSugerencia = sugerenciaService.getSugerencia(false);
-        model.addAttribute("sugerencia", listadoSugerencia);
-        return "/nosotros/listado";//editar
+    @RequestMapping("/nosotros")
+    public String nuevaSugerencia(Model model) {
+        model.addAttribute("sugerencia", "valor");
+        return "/nosotros";//editar
     }
 
-    @GetMapping("/nuevoSugerencia")
-    public String sugerenciaNuevo(Sugerencia sugerencia) {
-        return "/nosotros/nuevo"; //editar
-    }
+
 
 }

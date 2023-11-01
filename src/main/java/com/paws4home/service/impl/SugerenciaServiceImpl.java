@@ -16,7 +16,7 @@ public class SugerenciaServiceImpl implements SugerenciaService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Sugerencia> getSugerencia(boolean activos) {
+    public List<Sugerencia> getSugerencia() {
         List<Sugerencia> sugerencia = sugerenciaDao.findAll();
         
         return sugerencia;
@@ -31,6 +31,12 @@ public class SugerenciaServiceImpl implements SugerenciaService {
     @Transactional
     public void save(Sugerencia sugerencia) {
         sugerenciaDao.save(sugerencia);
+    }
+    
+    @Override
+    @Transactional
+    public void delete (Sugerencia sugerencia) {
+        sugerenciaDao.delete(sugerencia);
     }
 
 }
