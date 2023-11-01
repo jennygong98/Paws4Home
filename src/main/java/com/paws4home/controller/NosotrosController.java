@@ -10,22 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/sugerencia") //buscar como se llamaba la ventana
-public class SugerenciaController {
+@RequestMapping("/nosotros") //buscar como se llamaba la ventana
+public class NosotrosController {
 
     @Autowired
     private SugerenciaService sugerenciaService;
 
-    @GetMapping("/listado")
+    @GetMapping("/listadoSugerencia")
     public String inicio(Model model) {
         List<Sugerencia> listadoSugerencia = sugerenciaService.getSugerencia(false);
         model.addAttribute("sugerencia", listadoSugerencia);
-        return "/sugerencia/listado";
+        return "/nosotros/listado";//editar
     }
 
-    @GetMapping("/nuevo")
+    @GetMapping("/nuevoSugerencia")
     public String sugerenciaNuevo(Sugerencia sugerencia) {
-        return "/sugerencia/modifica";
+        return "/nosotros/nuevo"; //editar
     }
 
 }
