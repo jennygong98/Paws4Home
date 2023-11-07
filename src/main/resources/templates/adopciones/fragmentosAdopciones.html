@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="layout/plantilla :: head">
-        <link href="../../static/styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
 
@@ -123,7 +122,146 @@
             </div>
         </section>
         
-       
+        
+        <!-- fragmento formulario adoptar -->
+        <section th:fragment="form" class="border p-4" id="formulario" >
+            <div class="mb-3" style="max-width: 1400px; margin: auto; padding: 30px;
+                 background-color: #ED7333; color: #fcfcfc; border-radius: 10px;">
+                <h2> PRE-REGISTRO DE ADOPCIÓN </h2>
+                <p> ¡Estamos felices de que estes pensando en adoptar! Debes diligenciar totalmente este pre-registro y cumplir con lo contemplado para realizar una adopción. Los peluditos en adopción son animales callejeros o abandonados; no son regalados, tampoco son comprados, los requisitos aquí contenidos contemplan lo dispuesto en la Ley 1774 del 6 de enero del 2016 del estatuto nacional de protección animal. </p>
+                <p>  Esperamos que cada peludito encuentre un hogar lleno de amor. Ten en cuenta que ESTE DOCUMENTO DEBE SER DILIGENCIADO POR UNA PERSONA MAYOR DE 25 AÑOS y NO es posible hacer solicitudes a nombre de terceras personas. 
+                    TIEMPO ESTIMADO PARA DILIGENCIAR EL FORMULARIO: 5 Minutos </p>
+            </div>
+            <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                border-radius: 10px; border: 1px solid black;">
+                <label for="nombreMascota" class="form-label">Nombre de la mascota</label>
+                <input type="text" class="form-control" name="nombre" th:value=" ${mascota.nombre}" disabled/>
+            </div>
+            
+            <form method="POST"
+                  th:action="@{finalizarAdopcion}"
+                  th:object="${adoptar}" >
+  
+                <div class="mb-3" id="formulario">
+                    <input type="hidden" class="form-control" name="mascota.idMascota" th:value=" ${mascota.idMascota}" />
+                </div>
+
+                <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                     border-radius: 10px; border: 1px solid black;">
+                    <label for="correo" class="form-label">Correo electrónico</label>
+                    <input type="email" class="form-control" name="correo" aria-describedby="emailHelp" required="true"/>
+                </div>
+
+                <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" required="true" />
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="primApellido" class="form-label">Primer Apellido</label>
+                    <input type="text" class="form-control" name="primApellido" required="true" />
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="segApellido" class="form-label">Segundo Apellido</label>
+                    <input type="text" class="form-control" name="segApellido" required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="edad" class="form-label ">Edad</label>
+                    <input type="number" class="form-control" name="edad" required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="cedula" class="form-label">Número de cédula</label>
+                    <input type="number" class="form-control" name="cedula" required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="residencia" class="form-label">Residencia</label>
+                    <input type="text" class="form-control" name="residencia" required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="empresa" class="form-label">Empresa donde labora</label>
+                    <input type="text" class="form-control" name="empresa"required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="cargo" class="form-label">Cargo que desempeña</label>
+                    <input type="text" class="form-control" name="cargo"required="true" />
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="celular" class="form-label">Número de celular</label>
+                    <input type="tel" class="form-control" name="celular" required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px;  border: 1px solid black;">
+                    <label for="referencia" class="form-label">Número contacto para referencias</label>
+                    <input type="tel" class="form-control" name="referencia" required="true"/>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="habitantes" class="form-label">Indica si vives sólo o acompañado</label>
+                    <input type="text" class="form-control" name="habitantes" required="true"/>
+                </div>
+
+                <div class="mb-3"style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="alergias" class="form-label">¿Eres alérgico y/o asmático o algún miembro de tu casa?</label>
+                    <input type="text" class="form-control" name="alergias" required="true"/>
+                </div>   
+
+                <div class="mb-3"style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="tipoInmueble" class="form-label">Tipo de inmueble (casa, apartamento, etc)</label>
+                    <input type="text" class="form-control" name="tipoInmueble" required="true"/>
+                </div>  
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="motivo" class="form-label">¿Por qué deseas adoptar?</label>
+                    <textarea type="text" class="form-control" name="motivo" required="true"> </textarea>
+                </div>   
+
+                <div class="form-check" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;text-align: center">
+                    <input class="form-check-input mx-2" type="checkbox" value="1" name="disponible" style="margin-right: 5px;">
+                    <label class="form-check-label mr-3"  for="disponible" required="true">
+                    ¿Estás dispuesto a brindar información sobre la mascota cuando la fundación lo requiera?
+                    </label>
+                </div>
+
+                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
+                 border-radius: 10px; border: 1px solid black;">
+                    <label for="duda" class="form-label">Escribe si tienes alguna duda</label>
+                    <textarea class="form-control" name="duda" rows="3" ></textarea>
+                </div>
+
+                <div style="text-align: center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-check" style="width: 50px;"></i> Enviar
+                    </button>
+                    <a th:href="@{/adopciones/mascotas}" type="button" class="btn btn-danger">
+                        <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
+                    </a>
+                </div>
+                
+            </form>
+        </section>
+        
         
     </body>
 </html>
