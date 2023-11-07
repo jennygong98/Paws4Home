@@ -6,33 +6,8 @@
           <title>FORO</title>
      </head>
      <body>
-          <section th:fragment ="ejemploForo" class = " py-4">
-               <h1>Foro Paws4Home</h1>
-               <div th:each="foro : ${foros}">
-                    <div class="card" style="width: 60%;">
-                         <div class="card-body">
-                              <h5 class="card-title" th:text="${foro.comentario}">Title</h5>
-                              <p class="card-text" th:text="${forum.content}">Content</p>
-                              <a href="#" class="btn btn-primary">Read More</a>
-                              <a href="#" class="btn btn-danger">Delete</a>
-                              <a href="#" class="btn btn-success">Update</a>
-                         </div>
-                    </div>
 
-               </div>
-               <form method="post" action="#">
-                    <div class="form-group">
-                         <label for="title">Title</label>
-                         <input type="text" class="form-control" id="title" name="title" placeholder="Enter title"/>
-                    </div>
-                    <div class="form-group">
-                         <label for="content">Content</label>
-                         <textarea class="form-control" id="content" name="content" rows="3" placeholder="Enter content"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-               </form>
-          </section>
-          <section th:fragment="botonAgregar" class= "py-4 mb-4 bg-light">
+          <section th:fragment="nuevoHilo" class= "py-4 mb-4 bg-light">
                <div class= "container">
                     <div class= "row">
                          <div class = "cold-md-3">
@@ -40,9 +15,9 @@
                                    type="button"
                                    class="btn btn-primary btn-block"
                                    data-bs-toggle="modal"
-                                   data-bs-target="#agregarForo">
+                                   data-bs-target="#agregarHilo">
                                    <i class="fas fa-pluss"></i>
-                                   [[#{foro.agregar}]]
+                                   [[#{foro.agregarHilo}]]<!-- IMPORTANTE ESTA ETIQUETA PARA LA BASE DE DATOS-->
 
                               </button>
                          </div>
@@ -53,21 +28,21 @@
           </section>
           <!--mosttarr foros de entidad Foros-->
           <section th:fragment= "listadoForos" id="foro">
-               <div clas= "container">
+               <div clas= "container" class=" container-xxl my-5 align-item-center">
                     <div class= "row">
-                         <div class="col-md-9">
+                         <div class="col-md-12">
                               <div class= "card">
                                    <div class="card-header">
                                         <h4>Hilos</h>
                                    </div>
                                    <!--div th:if="${foro != null and !foro.empty}"-->
-                                   <table class="table table-striped table-hover">
+                                   <table class="table table-center mx-auto">
                                         <thead class="table-dark">
                                              <tr>
                                                   <th>#</th>
-                                                  <th>Descripcion</th>
                                                   <th>Comentarios</th>
                                                   <th>Publicado por</th>
+                                                  <th></th>
                                              </tr>
                                         </thead>
                                         <tbody>
@@ -75,18 +50,42 @@
                                                   <td>[[${contador.count}]]</td>
                                                   <td>[[${foro.comentario}]]</td>
                                                   <td>[[${foro.usuario}]]</td>
+                                                  <td>
+                                                       <a th:href ="@{?foro/eliminar}+${foro.idForo}" class= "btn btn-danger">
+                                                            <i class="fas fa-trash"></i>
+                                                       </a>
+                                                  </td>
                                              </tr>
                                         </tbody>
                                    </table>
 
                                    <!--/div-->
-                                   <div class="text-center p-2" th:if="${foro == null or foro.empty}">
+                                   <!--div class="text-center p-2" th:if="${foro == null or foro.empty}">
                                         <spam>Lista Vacia</spam>
-                                   </div>
+                                   </div-->
                               </div>
                          </div>
                     </div>
                </div>
           </section>
+
+          <div th:fragment="banner">
+               <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 98%; background-size: cover; background-position: center; height: 300px;
+                     display: grid; align-items: center; border-bottom-right-radius: 200px">
+                    <section class="text-white mt-5" style="padding-left: 50px">
+                         <h2 style="margin-left: 120px; font-weight: bold">COMPARTE CON NOSOTROS</h2>
+                         <h3>FORO</h3>
+                    </section>
+                    <section class="row flex-wrap">
+                         <div class="col-sm-4 col-lg-2" style="margin-left: 40px">
+                              <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style= "background-color: #ED7333; height: 60px; width: 150px">
+                                   <i class="fas  "></i> Nuevo hilo
+                              </a>
+                         </div>
+
+                    </section>
+               </section>
+          </div>
+
      </body>
 </html>
