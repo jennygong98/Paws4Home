@@ -10,17 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/nosotros")
 public class NosotrosController {
 
-    @Autowired
-    private SugerenciaService sugerenciaService;
+     @Autowired
+     private SugerenciaService sugerenciaService;
 
-    @RequestMapping("/nosotros")
-    public String nuevaSugerencia(Model model) {
-        model.addAttribute("sugerencia", "valor");
-        return "/nosotros";//editar
-    }
-
-
+     @GetMapping("/nosotrosPrincipal")
+     public String nuevaSugerencia(Model model) {
+          model.addAttribute("sugerencia", "valor");
+          return "/nosotros/nosotrosPrincipal";//editar
+     }
 
 }
