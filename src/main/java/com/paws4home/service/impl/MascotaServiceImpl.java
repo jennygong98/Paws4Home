@@ -15,13 +15,11 @@ public class MascotaServiceImpl implements MascotaService{
     @Autowired
     private MascotaDao mascotaDao;
     
-    @Override
+   @Override
     @Transactional (readOnly = true)
-    public List<Mascota> getMascotas(boolean activos) {
+    public List<Mascota> getMascotas() {
         List<Mascota> mascotas = mascotaDao.findAll();
-        if(activos){
-            mascotas.removeIf(a -> !a.isActivo());
-        }
+        
         return mascotas;
     }
 

@@ -18,19 +18,16 @@ public class Mascota implements Serializable{
     private Long idMascota;
     private String nombre;
     private int edad;
-    private boolean activo;
     private String rutaImagen;
 
     public Mascota() {
     }
 
-    public Mascota(String nombre, int edad, boolean activo, String rutaImagen) {
+    public Mascota(String nombre, int edad, String rutaImagen) {
         this.nombre = nombre;
         this.edad = edad;
-        this.activo = activo;
         this.rutaImagen = rutaImagen;
     }
-
 
 
 }

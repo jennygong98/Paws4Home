@@ -10,6 +10,7 @@
           <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
           <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
           <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+          <script th:src="@{/js/rutinas.js}"> </script>
           <link href="../../static/styles.css" rel="stylesheet" type="text/css"/>
      </head>
      <body>
@@ -49,7 +50,7 @@
                                                   <a class="dropdown-item" th:href="@{/adopciones/principal}">Adoptar</a>
                                              </li>
                                              <li>
-                                                  <a class="dropdown-item" href="#">Dar en adopción</a>
+                                                  <a class="dropdown-item" th:href="@{/adopciones/formDarAdopcion}">Dar en adopción</a>
                                              </li>
                                         </ul>
                                    </li>

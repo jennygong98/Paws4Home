@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MascotaService {
     
-    public List<Mascota> getMascotas(boolean activos);
+    public List<Mascota> getMascotas();
     
     public Mascota getMascota(Mascota mascota);
     
