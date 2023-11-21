@@ -34,14 +34,15 @@ public class ForoController {
 
      @PostMapping("/guardar")
      public String foroGuardar(Foro foro) {
+ 
           foroService.save(foro);
-          return "/redirect:/foro/listadoForo";
+          return "redirect:/foro/listadoForo";
      }
 
      @GetMapping("/eliminar/{idForo}")
      public String foroEliminar(Foro foro) {
           foroService.delete(foro);
-          return "/redirect:/foro/listadoForo";
+          return "redirect:/foro/listadoForo";
      }
 
      @GetMapping("/modificar/{idForo}")
@@ -50,4 +51,6 @@ public class ForoController {
           model.addAttribute("foro", foro);
           return "/foro/modifica";
      }
+     
+     
 }
