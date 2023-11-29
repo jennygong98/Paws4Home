@@ -66,7 +66,7 @@ public class AdopcionesController {
     }
   
     //metodo ingreso de mascotas al sistema
-    @PostMapping("/nuevaMascota")
+    @PostMapping("/guardar")
     public String guardaMascota(Mascota mascota,
             @RequestParam("imagenFile") MultipartFile imagenFile){
         if (!imagenFile.isEmpty()) {
@@ -98,13 +98,28 @@ public class AdopcionesController {
         return "redirect:/adopciones/mascotas";
     }
     
-    //metodo para eliminar mascotas
     @GetMapping("/eliminar/{idMascota}")
-    public String eliminarMascota(Mascota mascota){
-        mascotaService.delete(mascota);
+    public String eliminarMascota(Mascota mascota) {
+        //si ingresa, elimina los formularios asociados a esa mascota y después elimina la mascota
+        if (mascota != null) {
+            List<Adoptar> listaAdoptar = adoptarService.findByMascotaId(mascota.getIdMascota());
+            if (listaAdoptar != null && !listaAdoptar.isEmpty()) {
+                for (Adoptar adoptar : listaAdoptar) {
+                    adoptarService.delete(adoptar);
+                }
+            }
+            mascotaService.delete(mascota);
+        }
         return "redirect:/adopciones/mascotas";
     }
     
+    //metodo retorna la vista de modifica
+    @GetMapping("/modificar/{idMascota}")
+    public String modificarMascota(Model model, Mascota mascota){
+        Mascota mascotas = mascotaService.getMascota(mascota);
+        model.addAttribute("mascota", mascotas);
+        return "/adopciones/modifica";
+    }
     
     
 }

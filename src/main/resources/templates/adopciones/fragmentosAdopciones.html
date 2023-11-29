@@ -120,9 +120,9 @@
                     </div>
                     <section class="container col-md-12 d-flex justify-content-center ">
                         <div class="mb-4">
-                            <a th:href="${mascota.idMascota}" data-bs-toggle="modal" data-bs-target="#modalModificar" class="btn btn-primary">Modificar</a>
-                            <a th:href="@{/adopciones/nuevo/}+${mascota.idMascota}" class="btn btn-success">Adoptar</a>
-                            <a th:href="@{/adopciones/eliminar/}+${mascota.idMascota}" class="btn btn-danger">Eliminar</a>
+                            <a th:href="@{/adopciones/modificar/}+${mascota.idMascota}" class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')">Modificar</a>
+                            <a th:href="@{/adopciones/nuevo/}+${mascota.idMascota}" class="btn btn-success" >Adoptar</a>
+                            <a th:href="@{/adopciones/eliminar/}+${mascota.idMascota}" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</a>
                         </div>
                     </section>
             </div>
@@ -389,7 +389,7 @@
         </section>
         
         <!-- fragmento BOTÓN modal página mascotas-->
-        <section th:fragment="botonAgregar" class="py-4 mb-4 bg-light">
+        <section th:fragment="botonAgregar" class="py-4 mb-4 bg-light" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-12 d-flex justify-content-center">   
@@ -406,12 +406,12 @@
         </section>
         
         <!-- Modal para INGRESO DE MASCOTAS AL SISTEMA -->
-        <section th:fragment="modalMascota">
+        <section th:fragment="modalMascota" sec:authorize="hasRole('ROLE_ADMIN')">
             <div class="modal fade" id="agregarMascota" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
-                    <div class="modal-content border-2 border-secondary" style="background-color: #96B921">
+                    <div class="modal-content border-2 border-secondary" style="background-color: #F1FCFE">
                         <form class="form-group" method="POST" 
-                              th:action="@{nuevaMascota}" 
+                              th:action="@{guardar}" 
                               th:object="${mascota}" 
                               enctype="multipart/form-data">
                             <div class="modal-header">
@@ -443,46 +443,69 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Modal para MODIFICAR INFORMACIÓN DE MASCOTAS -->
-        <section th:fragment="modalModificar" >
-            <div class="modal fade" id="modalModificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content border-2 border-secondary" style="background-color: #96B921">
-                        <form class="form-group" method="POST" 
-                              th:action="@{nuevaMascota}" 
-                              th:object="${mascota}" 
-                              enctype="multipart/form-data">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar nueva mascota</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="edad">Edad</label>
-                                    <input type="number" class="form-control" name="edad" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen">Foto</label>
-                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" required="true"/>
-                                    <img id="blah" src="#" alt="your image" height="300"/>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                <button  type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-       
+                
+       <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+       <section th:fragment="editarMascota" sec:authorize="hasRole('ROLE_ADMIN')">
+           <div class="row">
+               <div class="col-md-2"></div>
+               <div class="col-md-8">
+                   <form method="POST"
+                         th:action="@{/adopciones/guardar}" 
+                         th:object="${mascota}"
+                         class="was-validated"                          
+                         enctype="multipart/form-data">
+                       <input type="hidden" name="idMascota" th:field="*{idMascota}"/>
+                       <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                       <div>
+                           <div class="container">
+                               <div class="row">
+                                   <div class="col-md-12">
+                                       <div class="card card rounded-0" style="background-color: #F1FCFE">
+                                           <div class="card-header">
+                                               <i class="fa-solid fa-paw"> Actualizar Mascota</i>
+                                           </div>
+                                           <div class="card-body bg-light">
+                                               <div class="mb-3">
+                                                   <label for="nombre">Nombre</label>
+                                                   <input type="text" class="form-control" 
+                                                          style="border-top: none; border-left: none; border-right: none;" 
+                                                          name="nombre" th:field="*{nombre}"
+                                                          required="true">
+                                               </div>
+                                               <div class="mb-3">
+                                                   <label for="edad">Edad</label>
+                                                   <input type="number" class="form-control" 
+                                                          style="border-top: none; border-left: none; border-right: none;" 
+                                                          name="edad" th:field="*{edad}"
+                                                          required="true">
+                                               </div>
+                                               <div class="mb-3">
+                                                   <label for="imagen">Imagen</label>
+                                                   <input class="form-control" type="file" name="imagenFile"
+                                                          style="border-top: none; border-left: none; border-right: none;" 
+                                                          onchange="readURL(this);" />
+                                                   <img id="blah" th:src="@{${mascota.rutaImagen}}" alt="your image" height="200" required="true"/>
+                                               </div>
+                                           </div>
+                                           <div class="card-footer">
+                                               <div style="text-align: center">
+                                                   <button type="submit" class="btn btn-primary m-3">
+                                                       <i class="fas fa-check" style="width: 50px;"></i> Enviar
+                                                   </button>
+                                                   <a th:href="@{/adopciones/mascotas}" type="button" class="btn btn-danger">
+                                                       <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
+                                                   </a>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                  
+                               </div>
+                           </div>
+                   </form>
+               </div>
+           </div>
+       </section>
+                        
     </body>
 </html>

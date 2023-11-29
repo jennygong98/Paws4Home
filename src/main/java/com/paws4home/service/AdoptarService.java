@@ -12,4 +12,8 @@ public interface AdoptarService {
     public Adoptar getFormulario(Adoptar formularioAdoptar);
     
     public void save (Adoptar formularioAdoptar);
+    
+    public void delete(Adoptar id);
+    
+    public List<Adoptar> findByMascotaId(Long id);
 }

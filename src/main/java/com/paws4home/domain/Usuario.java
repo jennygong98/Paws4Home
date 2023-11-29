@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,8 +33,7 @@ public class Usuario implements Serializable {
     @NotEmpty
     private String apellidos;
     private String correo;
-    private String telefono;
-    private boolean tipoUsuario;
+    private boolean activo;
 
     @OneToMany
     @JoinColumn(name = "id_usuario")

@@ -35,4 +35,15 @@ public class AdoptarServiceImpl implements AdoptarService{
         formularioAdoptarDao.save(formularioAdoptar);
     }
     
+    @Override
+    public List<Adoptar> findByMascotaId(Long id) {
+        List<Adoptar>forms= formularioAdoptarDao.findByMascotaId(id);
+        return forms;
+    }
+
+    @Override
+    public void delete(Adoptar id) {
+        formularioAdoptarDao.delete(id);
+    }
+    
 }
