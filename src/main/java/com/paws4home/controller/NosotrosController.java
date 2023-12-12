@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -24,7 +25,18 @@ public class NosotrosController {
 
     @GetMapping("/contactenos")
     public String contactenos(Model model) {
-        model.addAttribute("contactenos", "valor");
-        return "/nosotros/contactenos";//editar
+        var sugerencias= sugerenciaService.getSugerencias();
+        model.addAttribute("sugerencias", sugerencias);
+        return "/nosotros/contactenos";
     }
+    
+    
+    @PostMapping("/guardar")
+    public String guardarSugerencia(Sugerencia sugerencia){
+        sugerenciaService.save(sugerencia);
+        return "redirect:/nosotros/contactenos";
+    }
+    
+    
+    
 }

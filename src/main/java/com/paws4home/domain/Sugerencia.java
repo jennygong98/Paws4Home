@@ -21,14 +21,14 @@ public class Sugerencia implements Serializable {
     @Column(name = "id_sugerencia")
     private Long idSugerencia;
     private String nombre;
-    private String comentario;
+    private String mensaje;
 
     public Sugerencia() {
     }
 
-    public Sugerencia(String nombre, String comentario) {
+    public Sugerencia(String nombre, String mensaje) {
         this.nombre = nombre;
-        this.comentario = comentario;
+        this.mensaje = mensaje;
     }
 
 }

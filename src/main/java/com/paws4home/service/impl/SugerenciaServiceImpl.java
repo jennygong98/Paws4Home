@@ -15,12 +15,12 @@ public class SugerenciaServiceImpl implements SugerenciaService {
     private SugerenciaDao sugerenciaDao;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Sugerencia> getSugerencia() {
-        List<Sugerencia> sugerencia = sugerenciaDao.findAll();
+    public List<Sugerencia> getSugerencias() {
+         List<Sugerencia> sugerencia = sugerenciaDao.findAll();
         
         return sugerencia;
     }
+
 
     @Override
     public Sugerencia getSugerencia(Sugerencia sugerencia) {
@@ -39,4 +39,5 @@ public class SugerenciaServiceImpl implements SugerenciaService {
         sugerenciaDao.delete(sugerencia);
     }
 
+   
 }
