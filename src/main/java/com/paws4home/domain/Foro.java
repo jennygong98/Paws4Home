@@ -19,17 +19,21 @@ public class Foro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_foro")
     private long idForo;
+    private String titulo;
     private String comentario;
     private String usuario;
 
     public Foro() {
     }
 
-    public Foro(long idForo, String comentario, String usuario) {
+    public Foro(long idForo, String titulo, String comentario, String usuario) {
         this.idForo = idForo;
+        this.titulo = titulo;
         this.comentario = comentario;
         this.usuario = usuario;
     }
+
+    
 
   
 
