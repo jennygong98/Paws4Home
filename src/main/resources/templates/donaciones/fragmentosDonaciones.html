@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Paws4Home</title>
+    </head>
+    <body>
+        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="cold-md-3">
+                        <button type="button"
+                                class="btn btn-primary btn-block"
+                                data-bs-toggle="modal"
+                                data-bs-target="#agregarDonacion">
+                            <i class="fas fa-plus"> Agregar Donacion</i>
+                        </button>
+                    </div>
+                </div>
+            </div>       
+        </section>
+
+        <section th:fragment="agregarDonacion">
+            <div id="agregarDonacion"
+                 class="modal fade"
+                 tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Agregar donacion</h5>
+                            <button type="button" 
+                                    class="btn-close" 
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close">
+                            </button>
+                        </div>
+                        <form th:action="@{/donaciones/guardar}"
+                              th:object="${donacion}"
+                              method="POST" 
+                              class="was-validated" 
+                              enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="descripcion">Descripcion</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="descripcion"
+                                           required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="monto">Monto</label>
+                                    <input type="double"
+                                           class="form-control"
+                                           name="monto"
+                                           required="true"/>
+                                </div>
+                                 <div class="mb-3">
+                                    <label for="activo">[[#{donacion.activo}]]</label>
+                                    <input class="form-check-input"
+                                           type="checkbox"
+                                           name="activo"
+                                           id="activo"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen">[[#{donacion.rutaImagen}]]</label>
+                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                    <img id="blah" src="#" alt="your image" height="200"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        
+        
+
+
+
+    </body>
+</html>
