@@ -11,24 +11,29 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "sugerencia")
-public class Sugerencia implements Serializable {
+@Table(name = "contactenos")
+public class Contactenos implements Serializable {
 
     public static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_sugerencia")
-    private Long idSugerencia;
+    @Column(name = "id_contactenos")
+    private Long idContactenos;
     private String nombre;
+    private int telefono;
+    private String correo;
     private String comentario;
 
-    public Sugerencia() {
+    public Contactenos() {
     }
 
-    public Sugerencia(String nombre, String comentario) {
+    public Contactenos(String nombre, int telefono, String correo, String comentario) {
         this.nombre = nombre;
+        this.telefono = telefono;
+        this.correo = correo;
         this.comentario = comentario;
     }
-
+    
+    
 }
