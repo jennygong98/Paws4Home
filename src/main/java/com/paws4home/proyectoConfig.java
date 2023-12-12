@@ -72,7 +72,7 @@ public class proyectoConfig implements WebMvcConfigurer {
         http.authorizeHttpRequests((request) -> request
                 .requestMatchers("/","/index","/errores/**", "/error", "/error/**", "/registro/**",
                         "/adopciones/**","/foro/**","/nosotros/**",
-                        "/imagenes/**","/js/**","/webjars/**","/servicios/**")
+                        "/imagenes/**","/js/**","/webjars/**","/servicios/**","/donaciones/**")
                         .permitAll()
                 .requestMatchers(
                         "/adopciones/guardar", "/eliminar/**", 

@@ -8,7 +8,7 @@
 
         <!-- fragmento mensaje inicial pagina adopciones -->
         <div th:fragment="banner">
-            <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 100%; background-size: cover; background-position: center; height: 300px; 
+            <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 100%; background-size: cover; background-position: center; height: 300px;
                      display: grid; align-items: center; border-bottom-right-radius: 200px">
                 <section class="text-white mt-5" style="padding-left: 50px">
                     <h3>ENCUENTRA A TU ALMA GEMELA</h3>
@@ -21,13 +21,114 @@
                         </a>
                     </div>
                     <div class="col-sm-4 col-lg-2 " style="margin-left: 40px;">
-                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style= "background-color: #F5B333; height: 60px; width: 150px">
+                        <a 
+                            data-bs-toggle="modal"
+                            data-bs-target="#agregarDonacion" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style= "background-color: #F5B333; height: 60px; width: 150px">
                             <i class="fas"></i> Haz una donacion
+                        </a>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-2 " style="margin-left: 40px;">
+                        <a 
+                            data-bs-toggle="modal"
+                            data-bs-target="#mostrarDonaciones" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style= "background-color: #F5B333; height: 60px; width: 150px">
+                            <i class="fas"></i> Ver Donaciones
                         </a>
                     </div>
                 </section>
             </section>
         </div>
+
+
+        <section th:fragment="agregarDonacion">
+            <div id="agregarDonacion"
+                 class="modal fade"
+                 tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Agregar donacion</h5>
+                            <button type="button" 
+                                    class="btn-close" 
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close">
+                            </button>
+                        </div>
+                        <form th:action="@{/donaciones/guardar}"
+                              th:object="${donacion}"
+                              method="POST" 
+                              class="was-validated" 
+                              enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="descripcion">Descripcion</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name="descripcion"
+                                           required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="monto">Monto</label>
+                                    <input type="double"
+                                           class="form-control"
+                                           name="monto"
+                                           required="true"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section th:fragment="mostrarDonaciones">
+            <div id="mostrarDonaciones"
+                 class="modal fade"
+                 tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true"
+                 th:action="@{/donaciones/listado}"
+                 th:object="${donacion}">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title">Agregar donacion</h5>
+                        <button type="button" 
+                                class="btn-close" 
+                                data-bs-dismiss="modal"
+                                aria-label="Close">
+                        </button>
+                    </div>
+                    <table  class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr><th>#</th>
+                                <th>Descripcion</th>
+                                <th>Cantidad</th>
+                                <th></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="donacion, contador : ${donaciones}">
+                                <td>[[${contador.count}]]</td>
+                                <td>[[${donacion.descripcion}]]</td>
+                                <td>[[${donacion.Cantidad}]]</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+
+
+
 
         <!-- fragmento texto sobre paws4home pagina principal adopciones-->
         <div th:fragment="description" class="container-fluid text-center my-5 d-flex justify-content-center align-items-center flex-column">
@@ -58,454 +159,454 @@
                                                     🚫 Si vives en una zona de sobrepoblación canina o felina, te pedimos adoptes tú mismo a uno de la calle, se tú el salvador de ese peludito, así juntos podremos salvar más vidas!!<br>
                                                         ⚠️ Se deben cumplir los compromisos y obligaciones que figuran en el Contrato de Adopción.<br>
                                                             ⚠️Seguimos en constante seguimiento y comunicación para saber cómo va todo. Ellos siempre serán nuestros hijitos.</p>
-        </div>
+                                                            </div>
 
 
-        <!-- fragmento info/botón pre-formulario de adopción pagina principal-->
-        <div th:fragment="formButton" class="container-fluid my-5 p-5" >
-            <label>¿ESTÁS LIST@?</label>
-            <h2>ANTES DE APLICAR</h2>
-            <p>👉 Si estás interesad@ en adoptar a alguno de nuestros peluditos, antes de diligenciar el pre-formulario debes leer con detenimiento cada una de las siguientes preguntas frecuentes:</p>
-            <div class="text-center">
-                <a th:href="@{#}" class="btn btn-md fas text-white bg-warning" style= "height: 60px; width: 350px; display: flex; justify-content: center; align-items: center;">
-                    <i class="fas"></i> PRE-FORMULARIO DE ADOPCIÓN
-                </a>
-            </div>
-        </div>
-        
-        <!-- reflexiones con imagen de fondo -->
-        <div th:fragment="data" class="container-fluid text-center my-5" style="background-image: url('/imagenes/imagenGato.jpg'); max-width: 100%; background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; justify-content: center; border-bottom-right-radius: 200px; position: relativemax-width; overflow: hidden;">
+                                                            <!-- fragmento info/botón pre-formulario de adopción pagina principal-->
+                                                            <div th:fragment="formButton" class="container-fluid my-5 p-5" >
+                                                                <label>¿ESTÁS LIST@?</label>
+                                                                <h2>ANTES DE APLICAR</h2>
+                                                                <p>👉 Si estás interesad@ en adoptar a alguno de nuestros peluditos, antes de diligenciar el pre-formulario debes leer con detenimiento cada una de las siguientes preguntas frecuentes:</p>
+                                                                <div class="text-center">
+                                                                    <a th:href="@{#}" class="btn btn-md fas text-white bg-warning" style= "height: 60px; width: 350px; display: flex; justify-content: center; align-items: center;">
+                                                                        <i class="fas"></i> PRE-FORMULARIO DE ADOPCIÓN
+                                                                    </a>
+                                                                </div>
+                                                            </div>
 
-            <section class="text-white m-5" style="background-color: #ED7333; max-width: 50%; left: 0; height: 140px; width: 450px">
-                <h4>“Muchos animales necesitan un hogar”</h4>
-                <label>ADOPTA, dales una oportunidad y serán tus amigos fieles en todo momento ¡No te arrepentirás!</label>
-            </section>
+                                                            <!-- reflexiones con imagen de fondo -->
+                                                            <div th:fragment="data" class="container-fluid text-center my-5" style="background-image: url('/imagenes/imagenGato.jpg'); max-width: 100%; background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; justify-content: center; border-bottom-right-radius: 200px; position: relativemax-width; overflow: hidden;">
 
-            <section class="text-white m-5" style="background-color: #96B921;max-width: 50%; right: 0; height: 140px; width: 450px">
-                <h4>Hemos rescatado más de 550 Peludos</h4>
-                <label>Cada adopción garantiza la oportunidad de ayuda a otro peludo de la calle.</label>
-            </section>
+                                                                <section class="text-white m-5" style="background-color: #ED7333; max-width: 50%; left: 0; height: 140px; width: 450px">
+                                                                    <h4>“Muchos animales necesitan un hogar”</h4>
+                                                                    <label>ADOPTA, dales una oportunidad y serán tus amigos fieles en todo momento ¡No te arrepentirás!</label>
+                                                                </section>
 
-        </div>
-        
-        <!-- fragmento banner inicial pagina mascotas -->
-        <div th:fragment="bannerPets">
-            <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 100%;
-                     background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; border-bottom-right-radius: 200px">
-                <section class="text-white p-5" style="flex: 1;">
-                    <h4>ENCUENTRA</h4>
-                    <h2 style="font-weight: bold;">Tu amigo peludo</h2>
-                </section>
-            </section>
-        </div>
-        
-        <!-- fragmento texto descriptivo pagina mascotas -->
-        <div th:fragment="textPets" class="container text-center my-5">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <h3>Lista de peluditos en adopción</h3>
-                    <p>Estos son nuestros ángeles que buscan poder encontrar su hogar para siempre. Una vez escojas al peludito que quisieras adoptar, vuelve a la página de adopción, lee cuidadosamente nuestros requisitos, proceso de adopción y por último, rellena el formulario de adopción.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- html que muestra mascotas disponibles para adoptar -->
-        <section th:fragment="cards" style="width: 18rem; display: grid; grid-template-columns: repeat(3, 1fr);
-                            grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;">
-            <div th:each="mascota : ${mascotas}"  class="card shadow border" >
-                <img th:src="${mascota.rutaImagen}" class="card-img-top" alt="Imagen de mascota" style="width: 100%; height: 55%; margin: 0 auto">
-                    <div  class="card-body text-center" >
-                        <h5 th:text="${mascota.nombre}" class="card-title" ></h5>
-                        <p class="card-text">Edad: <span th:text="${mascota.edad}"></span></p>
-                    </div>
-                    <section class="container col-md-12 d-flex justify-content-center ">
-                        <div class="mb-4">
-                            <a th:href="@{/adopciones/modificar/}+${mascota.idMascota}" class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')">Modificar</a>
-                            <a th:href="@{/adopciones/nuevo/}+${mascota.idMascota}" class="btn btn-success" >Adoptar</a>
-                            <a th:href="@{/adopciones/eliminar/}+${mascota.idMascota}" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</a>
-                        </div>
-                    </section>
-            </div>
-        </section>
-        
-        
-        <!-- fragmento formulario ADOPTAR MASCOTA -->
-        <section th:fragment="formAdoptar" class="border p-4" id="formulario" >
-            <div class="mb-3" style="max-width: 1400px; margin: auto; padding: 30px;
-                 background-color: #ED7333; color: #fcfcfc; border-radius: 10px;">
-                <h2> PRE-REGISTRO DE ADOPCIÓN </h2>
-                <p> ¡Estamos felices de que estes pensando en adoptar! Debes diligenciar totalmente este pre-registro y cumplir con lo contemplado para realizar una adopción. Los peluditos en adopción son animales callejeros o abandonados; no son regalados, tampoco son comprados, los requisitos aquí contenidos contemplan lo dispuesto en la Ley 1774 del 6 de enero del 2016 del estatuto nacional de protección animal. </p>
-                <p>  Esperamos que cada peludito encuentre un hogar lleno de amor. Ten en cuenta que ESTE DOCUMENTO DEBE SER DILIGENCIADO POR UNA PERSONA MAYOR DE 25 AÑOS y NO es posible hacer solicitudes a nombre de terceras personas. 
-                    TIEMPO ESTIMADO PARA DILIGENCIAR EL FORMULARIO: 5 Minutos </p>
-            </div>
-            <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                border-radius: 10px; border: 1px solid black;">
-                <label for="nombreMascota" class="form-label">Nombre de la mascota</label>
-                <input type="text" class="form-control" name="nombre" th:value=" ${mascota.nombre}" disabled/>
-            </div>
-            
-            <form method="POST"
-                  th:action="@{finalizarAdopcion}"
-                  th:object="${adoptar}" >
-  
-                <div class="mb-3" id="formulario">
-                    <input type="hidden" class="form-control" name="mascota.idMascota" th:value=" ${mascota.idMascota}" />
-                </div>
+                                                                <section class="text-white m-5" style="background-color: #96B921;max-width: 50%; right: 0; height: 140px; width: 450px">
+                                                                    <h4>Hemos rescatado más de 550 Peludos</h4>
+                                                                    <label>Cada adopción garantiza la oportunidad de ayuda a otro peludo de la calle.</label>
+                                                                </section>
 
-                <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                     border-radius: 10px; border: 1px solid black;">
-                    <label for="correo" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" name="correo" aria-describedby="emailHelp" required="true"/>
-                </div>
+                                                            </div>
 
-                <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" required="true" />
-                </div>
+                                                            <!-- fragmento banner inicial pagina mascotas -->
+                                                            <div th:fragment="bannerPets">
+                                                                <section style="background-image: url('/imagenes/imagenPerros.jpg'); max-width: 100%;
+                                                                         background-size: cover; background-position: center; height: 300px; display: flex; align-items: center; border-bottom-right-radius: 200px">
+                                                                    <section class="text-white p-5" style="flex: 1;">
+                                                                        <h4>ENCUENTRA</h4>
+                                                                        <h2 style="font-weight: bold;">Tu amigo peludo</h2>
+                                                                    </section>
+                                                                </section>
+                                                            </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="primApellido" class="form-label">Primer Apellido</label>
-                    <input type="text" class="form-control" name="primApellido" required="true" />
-                </div>
+                                                            <!-- fragmento texto descriptivo pagina mascotas -->
+                                                            <div th:fragment="textPets" class="container text-center my-5">
+                                                                <div class="row justify-content-center">
+                                                                    <div class="col-md-8">
+                                                                        <h3>Lista de peluditos en adopción</h3>
+                                                                        <p>Estos son nuestros ángeles que buscan poder encontrar su hogar para siempre. Una vez escojas al peludito que quisieras adoptar, vuelve a la página de adopción, lee cuidadosamente nuestros requisitos, proceso de adopción y por último, rellena el formulario de adopción.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="segApellido" class="form-label">Segundo Apellido</label>
-                    <input type="text" class="form-control" name="segApellido" required="true"/>
-                </div>
+                                                            <!-- html que muestra mascotas disponibles para adoptar -->
+                                                            <section th:fragment="cards" style="width: 18rem; display: grid; grid-template-columns: repeat(3, 1fr);
+                                                                     grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;">
+                                                                <div th:each="mascota : ${mascotas}"  class="card shadow border" >
+                                                                    <img th:src="${mascota.rutaImagen}" class="card-img-top" alt="Imagen de mascota" style="width: 100%; height: 55%; margin: 0 auto">
+                                                                        <div  class="card-body text-center" >
+                                                                            <h5 th:text="${mascota.nombre}" class="card-title" ></h5>
+                                                                            <p class="card-text">Edad: <span th:text="${mascota.edad}"></span></p>
+                                                                        </div>
+                                                                        <section class="container col-md-12 d-flex justify-content-center ">
+                                                                            <div class="mb-4">
+                                                                                <a th:href="@{/adopciones/modificar/}+${mascota.idMascota}" class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')">Modificar</a>
+                                                                                <a th:href="@{/adopciones/nuevo/}+${mascota.idMascota}" class="btn btn-success" >Adoptar</a>
+                                                                                <a th:href="@{/adopciones/eliminar/}+${mascota.idMascota}" class="btn btn-danger" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</a>
+                                                                            </div>
+                                                                        </section>
+                                                                </div>
+                                                            </section>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="edad" class="form-label ">Edad</label>
-                    <input type="number" class="form-control" name="edad" required="true"/>
-                </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="cedula" class="form-label">Número de cédula</label>
-                    <input type="number" class="form-control" name="cedula" required="true"/>
-                </div>
+                                                            <!-- fragmento formulario ADOPTAR MASCOTA -->
+                                                            <section th:fragment="formAdoptar" class="border p-4" id="formulario" >
+                                                                <div class="mb-3" style="max-width: 1400px; margin: auto; padding: 30px;
+                                                                     background-color: #ED7333; color: #fcfcfc; border-radius: 10px;">
+                                                                    <h2> PRE-REGISTRO DE ADOPCIÓN </h2>
+                                                                    <p> ¡Estamos felices de que estes pensando en adoptar! Debes diligenciar totalmente este pre-registro y cumplir con lo contemplado para realizar una adopción. Los peluditos en adopción son animales callejeros o abandonados; no son regalados, tampoco son comprados, los requisitos aquí contenidos contemplan lo dispuesto en la Ley 1774 del 6 de enero del 2016 del estatuto nacional de protección animal. </p>
+                                                                    <p>  Esperamos que cada peludito encuentre un hogar lleno de amor. Ten en cuenta que ESTE DOCUMENTO DEBE SER DILIGENCIADO POR UNA PERSONA MAYOR DE 25 AÑOS y NO es posible hacer solicitudes a nombre de terceras personas. 
+                                                                        TIEMPO ESTIMADO PARA DILIGENCIAR EL FORMULARIO: 5 Minutos </p>
+                                                                </div>
+                                                                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                     border-radius: 10px; border: 1px solid black;">
+                                                                    <label for="nombreMascota" class="form-label">Nombre de la mascota</label>
+                                                                    <input type="text" class="form-control" name="nombre" th:value=" ${mascota.nombre}" disabled/>
+                                                                </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="residencia" class="form-label">Residencia</label>
-                    <input type="text" class="form-control" name="residencia" required="true"/>
-                </div>
+                                                                <form method="POST"
+                                                                      th:action="@{finalizarAdopcion}"
+                                                                      th:object="${adoptar}" >
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="empresa" class="form-label">Empresa donde labora</label>
-                    <input type="text" class="form-control" name="empresa"required="true"/>
-                </div>
+                                                                    <div class="mb-3" id="formulario">
+                                                                        <input type="hidden" class="form-control" name="mascota.idMascota" th:value=" ${mascota.idMascota}" />
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="cargo" class="form-label">Cargo que desempeña</label>
-                    <input type="text" class="form-control" name="cargo"required="true" />
-                </div>
+                                                                    <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="correo" class="form-label">Correo electrónico</label>
+                                                                        <input type="email" class="form-control" name="correo" aria-describedby="emailHelp" required="true"/>
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="celular" class="form-label">Número de celular</label>
-                    <input type="tel" class="form-control" name="celular" required="true"/>
-                </div>
+                                                                    <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="nombre" class="form-label">Nombre</label>
+                                                                        <input type="text" class="form-control" name="nombre" required="true" />
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px;  border: 1px solid black;">
-                    <label for="referencia" class="form-label">Número contacto para referencias</label>
-                    <input type="tel" class="form-control" name="referencia" required="true"/>
-                </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="primApellido" class="form-label">Primer Apellido</label>
+                                                                        <input type="text" class="form-control" name="primApellido" required="true" />
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="habitantes" class="form-label">Indica si vives sólo o acompañado</label>
-                    <input type="text" class="form-control" name="habitantes" required="true"/>
-                </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="segApellido" class="form-label">Segundo Apellido</label>
+                                                                        <input type="text" class="form-control" name="segApellido" required="true"/>
+                                                                    </div>
 
-                <div class="mb-3"style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="alergias" class="form-label">¿Eres alérgico y/o asmático o algún miembro de tu casa?</label>
-                    <input type="text" class="form-control" name="alergias" required="true"/>
-                </div>   
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="edad" class="form-label ">Edad</label>
+                                                                        <input type="number" class="form-control" name="edad" required="true"/>
+                                                                    </div>
 
-                <div class="mb-3"style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="tipoInmueble" class="form-label">Tipo de inmueble (casa, apartamento, etc)</label>
-                    <input type="text" class="form-control" name="tipoInmueble" required="true"/>
-                </div>  
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="cedula" class="form-label">Número de cédula</label>
+                                                                        <input type="number" class="form-control" name="cedula" required="true"/>
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="motivo" class="form-label">¿Por qué deseas adoptar?</label>
-                    <textarea type="text" class="form-control" name="motivo" required="true"> </textarea>
-                </div>   
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="residencia" class="form-label">Residencia</label>
+                                                                        <input type="text" class="form-control" name="residencia" required="true"/>
+                                                                    </div>
 
-                <div class="form-check mb-3" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;text-align: center">
-                    <input class="form-check-input mx-2" type="checkbox" value="1" name="disponible" style="margin-right: 5px;">
-                    <label class="form-check-label mr-3"  for="disponible" required="true">
-                    ¿Estás dispuesto a brindar información sobre la mascota cuando la fundación lo requiera?
-                    </label>
-                </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="empresa" class="form-label">Empresa donde labora</label>
+                                                                        <input type="text" class="form-control" name="empresa"required="true"/>
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="duda" class="form-label">Escribe si tienes alguna duda</label>
-                    <textarea class="form-control" name="duda" rows="3" ></textarea>
-                </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="cargo" class="form-label">Cargo que desempeña</label>
+                                                                        <input type="text" class="form-control" name="cargo"required="true" />
+                                                                    </div>
 
-                <div style="text-align: center">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-check" style="width: 50px;"></i> Enviar
-                    </button>
-                    <a th:href="@{/adopciones/mascotas}" type="button" class="btn btn-danger">
-                        <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
-                    </a>
-                </div>
-                
-            </form>
-        </section>
-        
-        <!-- fragmento formulario DAR MASCOTA EN ADOPCIÓN -->
-        <section th:fragment="formDarAdopcion" class="border p-4" id="formulario" >
-            <div class="mb-3" style="max-width: 1400px; margin: auto; padding: 30px;
-                 background-color: #ED7333; color: #fcfcfc; border-radius: 10px;">
-                <h2> DAR MASCOTA EN ADOPCIÓN </h2>
-                <p>  Ten en cuenta que ESTE DOCUMENTO DEBE SER DILIGENCIADO POR UNA PERSONA MAYOR DE 25 AÑOS y NO es posible hacer solicitudes a nombre de terceras personas. 
-                    TIEMPO ESTIMADO PARA DILIGENCIAR EL FORMULARIO: 5 Minutos </p>
-            </div>
-            
-            <form method="POST"
-                  th:action="@{solicitud}"
-                  th:object="${solicitud}" 
-                  enctype="multipart/form-data">
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="celular" class="form-label">Número de celular</label>
+                                                                        <input type="tel" class="form-control" name="celular" required="true"/>
+                                                                    </div>
 
-                <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                     border-radius: 10px; border: 1px solid black;">
-                    <label for="correo" class="form-label">Correo electrónico</label>
-                    <input type="email" class="form-control" name="correo" aria-describedby="emailHelp" required="true"/>
-                </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px;  border: 1px solid black;">
+                                                                        <label for="referencia" class="form-label">Número contacto para referencias</label>
+                                                                        <input type="tel" class="form-control" name="referencia" required="true"/>
+                                                                    </div>
 
-                 <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="fechaFormulario" class="form-label">Fecha de solicitud</label>
-                    <input type="date" class="form-control" name="fechaFormulario" required="true"/>
-                 </div>
-                
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="cedula" class="form-label">Número de cédula del dueño actual</label>
-                    <input type="number" class="form-control" name="cedula" required="true"/>
-                </div>
-                
-                 <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="numero" class="form-label">Número de celular</label>
-                    <input type="tel" class="form-control" name="numero" required="true"/>
-                </div>
-                
-                <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="nombreMascota" class="form-label">Nombre de la mascota</label>
-                    <input type="text" class="form-control" name="nombreMascota" required="true" />
-                </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="habitantes" class="form-label">Indica si vives sólo o acompañado</label>
+                                                                        <input type="text" class="form-control" name="habitantes" required="true"/>
+                                                                    </div>
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="edadMascota" class="form-label ">Edad de la mascota</label>
-                    <input type="number" class="form-control" name="edadMascota" required="true"/>
-                </div>
-                
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="motivo" class="form-label">Razón a dejar en adopción</label>
-                    <textarea type="text" class="form-control" name="motivo" required="true"> </textarea>
-                </div>   
-                
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="residencia" class="form-label">Dirección específica de residencia</label>
-                    <input type="text" class="form-control" name="residencia" required="true"/>
-                </div>
-                                
-                <div class="form-check mb-3" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid black; text-align: center">
-                    <label class="form-check-label mr-3">
-                        ¿Tienes la posibilidad de traer la mascota hasta nuestro refugio?
-                    </label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input mx-2" type="radio" value="1" name="recoger" required>
-                            <label class="form-check-label mr-3" for="recoger">Sí</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input mx-2" type="radio" value="0" name="recoger" required>
-                            <label class="form-check-label mr-3" for="recoger">No</label>
-                    </div>
-                </div>
-                
-                <div class="form-check mb-3" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid black; text-align: center">
-                    <label class="form-check-label mr-3">
-                        ¿Está su mascota esterilizada?
-                    </label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input mx-2" type="radio" value="1" name="esterilizado" required>
-                            <label class="form-check-label mr-3" for="esterilizado">Sí</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input mx-2" type="radio" value="0" name="esterilizado" required>
-                            <label class="form-check-label mr-3" for="esterilizado">No</label>
-                    </div>
-                </div>
-                
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="enfermedad" class="form-label">Indique si su mascota tiene alguna enfermedad que debamos conocer</label>
-                    <input type="text" class="form-control" name="enfermedad" />
-                </div>
+                                                                    <div class="mb-3"style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="alergias" class="form-label">¿Eres alérgico y/o asmático o algún miembro de tu casa?</label>
+                                                                        <input type="text" class="form-control" name="alergias" required="true"/>
+                                                                    </div>   
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="informacion" class="form-label">Información extra que deberíamos saber de tu mascota</label>
-                    <textarea class="form-control" name="informacion" rows="3" ></textarea>
-                </div>
+                                                                    <div class="mb-3"style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="tipoInmueble" class="form-label">Tipo de inmueble (casa, apartamento, etc)</label>
+                                                                        <input type="text" class="form-control" name="tipoInmueble" required="true"/>
+                                                                    </div>  
 
-                <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9; 
-                 border-radius: 10px; border: 1px solid black;">
-                    <label for="imagen">Adjuntar foto de la mascota</label>
-                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
-                    <img id="blah" src="#" alt="your image" height="200"/>
-                </div>
-                
-                <div style="text-align: center">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-check" style="width: 50px;"></i> Enviar
-                    </button>
-                    <a th:href="@{/adopciones/principal}" type="button" class="btn btn-danger">
-                        <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
-                    </a>
-                </div>
-            </form>
-        </section>
-        
-        <!-- fragmento BOTÓN modal página mascotas-->
-        <section th:fragment="botonAgregar" class="py-4 mb-4 bg-light" sec:authorize="hasRole('ROLE_ADMIN')">
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-12 d-flex justify-content-center">   
-                        <button 
-                            type="button" 
-                            class="btn btn-primary p-3" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#agregarMascota">
-                            <i class="fas fa-plus"></i> Agregar mascota al sistema
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Modal para INGRESO DE MASCOTAS AL SISTEMA -->
-        <section th:fragment="modalMascota" sec:authorize="hasRole('ROLE_ADMIN')">
-            <div class="modal fade" id="agregarMascota" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content border-2 border-secondary" style="background-color: #F1FCFE">
-                        <form class="form-group" method="POST" 
-                              th:action="@{guardar}" 
-                              th:object="${mascota}" 
-                              enctype="multipart/form-data">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar nueva mascota</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="edad">Edad</label>
-                                    <input type="number" class="form-control" name="edad" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen">Foto</label>
-                                    <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" required="true"/>
-                                    <img id="blah" src="#" alt="your image" height="300"/>
-                                </div>
-                            </div>
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="motivo" class="form-label">¿Por qué deseas adoptar?</label>
+                                                                        <textarea type="text" class="form-control" name="motivo" required="true"> </textarea>
+                                                                    </div>   
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                <button  type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-                
-       <!-- 4 Fragmento que se utiliza en la página modifca.html -->
-       <section th:fragment="editarMascota" sec:authorize="hasRole('ROLE_ADMIN')">
-           <div class="row">
-               <div class="col-md-2"></div>
-               <div class="col-md-8">
-                   <form method="POST"
-                         th:action="@{/adopciones/guardar}" 
-                         th:object="${mascota}"
-                         class="was-validated"                          
-                         enctype="multipart/form-data">
-                       <input type="hidden" name="idMascota" th:field="*{idMascota}"/>
-                       <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
-                       <div>
-                           <div class="container">
-                               <div class="row">
-                                   <div class="col-md-12">
-                                       <div class="card card rounded-0" style="background-color: #F1FCFE">
-                                           <div class="card-header">
-                                               <i class="fa-solid fa-paw"> Actualizar Mascota</i>
-                                           </div>
-                                           <div class="card-body bg-light">
-                                               <div class="mb-3">
-                                                   <label for="nombre">Nombre</label>
-                                                   <input type="text" class="form-control" 
-                                                          style="border-top: none; border-left: none; border-right: none;" 
-                                                          name="nombre" th:field="*{nombre}"
-                                                          required="true">
-                                               </div>
-                                               <div class="mb-3">
-                                                   <label for="edad">Edad</label>
-                                                   <input type="number" class="form-control" 
-                                                          style="border-top: none; border-left: none; border-right: none;" 
-                                                          name="edad" th:field="*{edad}"
-                                                          required="true">
-                                               </div>
-                                               <div class="mb-3">
-                                                   <label for="imagen">Imagen</label>
-                                                   <input class="form-control" type="file" name="imagenFile"
-                                                          style="border-top: none; border-left: none; border-right: none;" 
-                                                          onchange="readURL(this);" />
-                                                   <img id="blah" th:src="@{${mascota.rutaImagen}}" alt="your image" height="200" required="true"/>
-                                               </div>
-                                           </div>
-                                           <div class="card-footer">
-                                               <div style="text-align: center">
-                                                   <button type="submit" class="btn btn-primary m-3">
-                                                       <i class="fas fa-check" style="width: 50px;"></i> Enviar
-                                                   </button>
-                                                   <a th:href="@{/adopciones/mascotas}" type="button" class="btn btn-danger">
-                                                       <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
-                                                   </a>
-                                               </div>
-                                           </div>
-                                       </div>
-                                   </div>
-                                  
-                               </div>
-                           </div>
-                   </form>
-               </div>
-           </div>
-       </section>
-                        
-    </body>
-</html>
+                                                                    <div class="form-check mb-3" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;text-align: center">
+                                                                        <input class="form-check-input mx-2" type="checkbox" value="1" name="disponible" style="margin-right: 5px;">
+                                                                            <label class="form-check-label mr-3"  for="disponible" required="true">
+                                                                                ¿Estás dispuesto a brindar información sobre la mascota cuando la fundación lo requiera?
+                                                                            </label>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="duda" class="form-label">Escribe si tienes alguna duda</label>
+                                                                        <textarea class="form-control" name="duda" rows="3" ></textarea>
+                                                                    </div>
+
+                                                                    <div style="text-align: center">
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            <i class="fas fa-check" style="width: 50px;"></i> Enviar
+                                                                        </button>
+                                                                        <a th:href="@{/adopciones/mascotas}" type="button" class="btn btn-danger">
+                                                                            <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
+                                                                        </a>
+                                                                    </div>
+
+                                                                </form>
+                                                            </section>
+
+                                                            <!-- fragmento formulario DAR MASCOTA EN ADOPCIÓN -->
+                                                            <section th:fragment="formDarAdopcion" class="border p-4" id="formulario" >
+                                                                <div class="mb-3" style="max-width: 1400px; margin: auto; padding: 30px;
+                                                                     background-color: #ED7333; color: #fcfcfc; border-radius: 10px;">
+                                                                    <h2> DAR MASCOTA EN ADOPCIÓN </h2>
+                                                                    <p>  Ten en cuenta que ESTE DOCUMENTO DEBE SER DILIGENCIADO POR UNA PERSONA MAYOR DE 25 AÑOS y NO es posible hacer solicitudes a nombre de terceras personas. 
+                                                                        TIEMPO ESTIMADO PARA DILIGENCIAR EL FORMULARIO: 5 Minutos </p>
+                                                                </div>
+
+                                                                <form method="POST"
+                                                                      th:action="@{solicitud}"
+                                                                      th:object="${solicitud}" 
+                                                                      enctype="multipart/form-data">
+
+                                                                    <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="correo" class="form-label">Correo electrónico</label>
+                                                                        <input type="email" class="form-control" name="correo" aria-describedby="emailHelp" required="true"/>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="fechaFormulario" class="form-label">Fecha de solicitud</label>
+                                                                        <input type="date" class="form-control" name="fechaFormulario" required="true"/>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="cedula" class="form-label">Número de cédula del dueño actual</label>
+                                                                        <input type="number" class="form-control" name="cedula" required="true"/>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="numero" class="form-label">Número de celular</label>
+                                                                        <input type="tel" class="form-control" name="numero" required="true"/>
+                                                                    </div>
+
+                                                                    <div class="mb-3" id="formulario" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="nombreMascota" class="form-label">Nombre de la mascota</label>
+                                                                        <input type="text" class="form-control" name="nombreMascota" required="true" />
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="edadMascota" class="form-label ">Edad de la mascota</label>
+                                                                        <input type="number" class="form-control" name="edadMascota" required="true"/>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="motivo" class="form-label">Razón a dejar en adopción</label>
+                                                                        <textarea type="text" class="form-control" name="motivo" required="true"> </textarea>
+                                                                    </div>   
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="residencia" class="form-label">Dirección específica de residencia</label>
+                                                                        <input type="text" class="form-control" name="residencia" required="true"/>
+                                                                    </div>
+
+                                                                    <div class="form-check mb-3" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid black; text-align: center">
+                                                                        <label class="form-check-label mr-3">
+                                                                            ¿Tienes la posibilidad de traer la mascota hasta nuestro refugio?
+                                                                        </label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input mx-2" type="radio" value="1" name="recoger" required>
+                                                                                <label class="form-check-label mr-3" for="recoger">Sí</label>
+                                                                        </div>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input mx-2" type="radio" value="0" name="recoger" required>
+                                                                                <label class="form-check-label mr-3" for="recoger">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-check mb-3" style="max-width: 800px; margin: auto; padding: 30px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid black; text-align: center">
+                                                                        <label class="form-check-label mr-3">
+                                                                            ¿Está su mascota esterilizada?
+                                                                        </label>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input mx-2" type="radio" value="1" name="esterilizado" required>
+                                                                                <label class="form-check-label mr-3" for="esterilizado">Sí</label>
+                                                                        </div>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input mx-2" type="radio" value="0" name="esterilizado" required>
+                                                                                <label class="form-check-label mr-3" for="esterilizado">No</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="enfermedad" class="form-label">Indique si su mascota tiene alguna enfermedad que debamos conocer</label>
+                                                                        <input type="text" class="form-control" name="enfermedad" />
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="informacion" class="form-label">Información extra que deberíamos saber de tu mascota</label>
+                                                                        <textarea class="form-control" name="informacion" rows="3" ></textarea>
+                                                                    </div>
+
+                                                                    <div class="mb-3" style="max-width: 800px; margin: auto; padding: 20px; background-color: #f9f9f9;
+                                                                         border-radius: 10px; border: 1px solid black;">
+                                                                        <label for="imagen">Adjuntar foto de la mascota</label>
+                                                                        <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                                                        <img id="blah" src="#" alt="your image" height="200"/>
+                                                                    </div>
+
+                                                                    <div style="text-align: center">
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            <i class="fas fa-check" style="width: 50px;"></i> Enviar
+                                                                        </button>
+                                                                        <a th:href="@{/adopciones/principal}" type="button" class="btn btn-danger">
+                                                                            <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
+                                                                        </a>
+                                                                    </div>
+                                                                </form>
+                                                            </section>
+
+                                                            <!-- fragmento BOTÓN modal página mascotas-->
+                                                            <section th:fragment="botonAgregar" class="py-4 mb-4 bg-light" sec:authorize="hasRole('ROLE_ADMIN')">
+                                                                <div class="container mt-5">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 d-flex justify-content-center">   
+                                                                            <button 
+                                                                                type="button" 
+                                                                                class="btn btn-primary p-3" 
+                                                                                data-bs-toggle="modal" 
+                                                                                data-bs-target="#agregarMascota">
+                                                                                <i class="fas fa-plus"></i> Agregar mascota al sistema
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+
+                                                            <!-- Modal para INGRESO DE MASCOTAS AL SISTEMA -->
+                                                            <section th:fragment="modalMascota" sec:authorize="hasRole('ROLE_ADMIN')">
+                                                                <div class="modal fade" id="agregarMascota" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-lg">
+                                                                        <div class="modal-content border-2 border-secondary" style="background-color: #F1FCFE">
+                                                                            <form class="form-group" method="POST" 
+                                                                                  th:action="@{guardar}" 
+                                                                                  th:object="${mascota}" 
+                                                                                  enctype="multipart/form-data">
+                                                                                <div class="modal-header">
+                                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar nueva mascota</h1>
+                                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="mb-3">
+                                                                                        <label for="nombre">Nombre</label>
+                                                                                        <input type="text" class="form-control" name="nombre" required="true"/>
+                                                                                    </div>
+                                                                                    <div class="mb-3">
+                                                                                        <label for="edad">Edad</label>
+                                                                                        <input type="number" class="form-control" name="edad" required="true"/>
+                                                                                    </div>
+                                                                                    <div class="mb-3">
+                                                                                        <label for="imagen">Foto</label>
+                                                                                        <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" required="true"/>
+                                                                                        <img id="blah" src="#" alt="your image" height="300"/>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                                                                                    <button  type="submit" class="btn btn-primary">Guardar</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+
+                                                            <!-- 4 Fragmento que se utiliza en la página modifca.html -->
+                                                            <section th:fragment="editarMascota" sec:authorize="hasRole('ROLE_ADMIN')">
+                                                                <div class="row">
+                                                                    <div class="col-md-2"></div>
+                                                                    <div class="col-md-8">
+                                                                        <form method="POST"
+                                                                              th:action="@{/adopciones/guardar}" 
+                                                                              th:object="${mascota}"
+                                                                              class="was-validated"                          
+                                                                              enctype="multipart/form-data">
+                                                                            <input type="hidden" name="idMascota" th:field="*{idMascota}"/>
+                                                                            <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                                                                            <div>
+                                                                                <div class="container">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="card card rounded-0" style="background-color: #F1FCFE">
+                                                                                                <div class="card-header">
+                                                                                                    <i class="fa-solid fa-paw"> Actualizar Mascota</i>
+                                                                                                </div>
+                                                                                                <div class="card-body bg-light">
+                                                                                                    <div class="mb-3">
+                                                                                                        <label for="nombre">Nombre</label>
+                                                                                                        <input type="text" class="form-control" 
+                                                                                                               style="border-top: none; border-left: none; border-right: none;" 
+                                                                                                               name="nombre" th:field="*{nombre}"
+                                                                                                               required="true">
+                                                                                                    </div>
+                                                                                                    <div class="mb-3">
+                                                                                                        <label for="edad">Edad</label>
+                                                                                                        <input type="number" class="form-control" 
+                                                                                                               style="border-top: none; border-left: none; border-right: none;" 
+                                                                                                               name="edad" th:field="*{edad}"
+                                                                                                               required="true">
+                                                                                                    </div>
+                                                                                                    <div class="mb-3">
+                                                                                                        <label for="imagen">Imagen</label>
+                                                                                                        <input class="form-control" type="file" name="imagenFile"
+                                                                                                               style="border-top: none; border-left: none; border-right: none;" 
+                                                                                                               onchange="readURL(this);" />
+                                                                                                        <img id="blah" th:src="@{${mascota.rutaImagen}}" alt="your image" height="200" required="true"/>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="card-footer">
+                                                                                                    <div style="text-align: center">
+                                                                                                        <button type="submit" class="btn btn-primary m-3">
+                                                                                                            <i class="fas fa-check" style="width: 50px;"></i> Enviar
+                                                                                                        </button>
+                                                                                                        <a th:href="@{/adopciones/mascotas}" type="button" class="btn btn-danger">
+                                                                                                            <i class="fas fa-arrow-left" style="width: 40px;"></i> Cancelar
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </section>
+
+                                                            </body>
+                                                            </html>

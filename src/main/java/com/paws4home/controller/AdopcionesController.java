@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.paws4home.service.MascotaService;
 import com.paws4home.service.AdoptarService;
 import com.paws4home.service.DarAdopcionService;
+import com.paws4home.service.DonacionService;
 import com.paws4home.service.FirebaseStorageService;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,6 +34,8 @@ public class AdopcionesController {
     
     @Autowired
     private FirebaseStorageService firebaseStorageService;
+    
+    @Autowired DonacionService donacionService;
     
     //retorna principal adopciones
     @RequestMapping("/principal")
