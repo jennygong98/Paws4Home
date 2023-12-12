@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/nosotros")
 public class NosotrosController {
 
-     @Autowired
-     private SugerenciaService sugerenciaService;
+    @Autowired
+    private SugerenciaService sugerenciaService;
 
-     @GetMapping("/nosotrosPrincipal")
-     public String nuevaSugerencia(Model model) {
-          model.addAttribute("sugerencia", "valor");
-          return "/nosotros/nosotrosPrincipal";//editar
-     }
+    @RequestMapping("/principal")
+    public String inicioAdoptar(Model model) {
+        model.addAttribute("attribute", "value");
+        return "/nosotros/principal";
+    }
 
+    @GetMapping("/contactenos")
+    public String contactenos(Model model) {
+        model.addAttribute("contactenos", "valor");
+        return "/nosotros/contactenos";//editar
+    }
 }
