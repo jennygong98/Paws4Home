@@ -15,12 +15,12 @@
                 </section>
                 <section class="row flex-wrap">
                     <div class="col-sm-4 col-lg-2" style="margin-left: 40px">
-                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style="background-color: #ED7333; height: 60px; width: 150px">
+                        <a href="#sugerencias" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style="background-color: #ED7333; height: 60px; width: 150px">
                             <i class="fas"></i> SUGERENCIA
                         </a>
                     </div>
                     <div class="col-sm-4 col-lg-2 " style="margin-left: 40px;">
-                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style="background-color: #F5B333; height: 60px; width: 150px">
+                        <a href="#contactenos" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style="background-color: #F5B333; height: 60px; width: 150px">
                             <i class="fas"></i> ESCRIBENOS
                         </a>
                     </div>
@@ -99,24 +99,23 @@
                                                                                 <!-- 5- fragmento Nosotros/Contactar Espacio para sugerencia y contactarnos -->
                                                                                 <div th:fragment="cuadrosSugerenciaContactenos" style=" text-align: justify; max-width: 100%; justify-content: center; align-items: center;">    
                                                                                     <section class="row flex-wrap" style="width: 18rem; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;"> 
-                                                                                        <div class="col-sm-4 col-lg-2">
-                                                                                            <div  class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto;">
+                                                                                        <div class="col-sm-4 col-lg-2" id="sugerencias">
+                                                                                            <div class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto;">
                                                                                                 <h5 class="card-header" style="text-align: center;">Sugerencias</h5>
-                                                                                                <div class="card-body">
-                                                                                                    <!--<form method="POST" th:action="@{Sugerencia}" th:object="${adoptar}" >-->
-                                                                                                        <form method="POST" th:action="@{/nosotros/guardar}" th:object="${sugerencia}" >
-                                                                                                        <input type="text" class="form-control" name="nombre" required="true" placeholder="Ingrese su nombre">
-                                                                                                            <textarea type="text" class="form-control" name="mensaje" required="true" placeholder="Escriba su mensaje" style="margin-top: 3%; height: 245px; width: 100%; resize: none;"></textarea>
-                                                                                                            <div class="text-center" style="margin-top: 1.5%;">
-                                                                                                                <a href="#" class="btn btn-primary">ENVIAR</a>
+                                                                                                <div class="card-body d-flex flex-column">
+                                                                                                    <form method="POST" th:action="@{/nosotros/guardar}" th:object="${sugerencia}" class="h-100">
+                                                                                                        <input type="text" class="form-control mb-3" name="nombre" required="true" placeholder="Ingrese su nombre">
+                                                                                                            <textarea type="text" class="form-control mb-3" name="mensaje" required="true" placeholder="Escriba su mensaje" style="height: 68%; width: 100%; resize: none;"></textarea>
+                                                                                                            <div class="text-center mt-auto">
+                                                                                                                <button type="submit" class="btn btn-primary m-2">Enviar</button>
                                                                                                             </div>
                                                                                                     </form>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
 
-                                                                                        <div class="col-sm-4 col-lg-2">
-                                                                                            <div class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto; margin-top: 3%;">
+                                                                                        <div class="col-sm-4 col-lg-2" id="contactenos">
+                                                                                            <div class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto;">
                                                                                                 <h5 class="card-header" style="text-align: center;">Contáctenos</h5>
                                                                                                 <div class="card-body">
                                                                                                     <form method="POST" th:action="@{Sugerencia}" th:object="${adoptar}" >
@@ -124,13 +123,13 @@
                                                                                                             <input type="text" class="form-control" name="telefon" required="true" placeholder="Ingrese su número de telefono" style="margin-top: 3%;">
                                                                                                                 <input type="text" class="form-control" name="correo" required="true" placeholder="Ingrese su correo electrónico" style="margin-top: 3%;">
                                                                                                                     <textarea type="text" class="form-control" name="mensaje" required="true" placeholder="Escriba su mensaje" style="margin-top: 3%; height: 140px; width: 100%; resize: none;"></textarea>
-                                                                                                                    <div class="text-center" style="margin-top: 1.5%;">
-                                                                                                                        <a href="#" class="btn btn-primary">ENVIAR</a>
+                                                                                                                    <div class="text-center mt-auto">
+                                                                                                                        <button type="#" class="btn btn-primary m-2">Enviar</button>
                                                                                                                     </div>
-                                                                                                                    </form>
-                                                                                                                    </div>
-                                                                                                                    </div>
-                                                                                                                    </div>
+                                                                                                    </form>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
                                                                                                                     </section>
                                                                                                                     </div>
 
@@ -153,7 +152,7 @@
                                                                                                                         <div style="text-align: center;">
                                                                                                                             <h2 style="color: #707070;"> Apoya Nuestra Labor</h2>
                                                                                                                             <p></p>
-                                                                                                                            <a th:href="@{#}" class="btn btn-md text-white d-flex align-items-center justify-content-center" style="background-color: #96B921; height: 60px; width: 300px; font-size: 20px; margin-left: 40%">
+                                                                                                                            <a th:href="@{/adopciones/principal}" class="btn btn-md text-white d-flex align-items-center justify-content-center" style="background-color: #96B921; height: 60px; width: 300px; font-size: 20px; margin-left: 40%">
                                                                                                                                 <i class="fas fa-donate" style="margin-right: 5px; font-size: 24px;"></i> HAZ TÚ DONACIÓN AQUÍ
                                                                                                                             </a>
                                                                                                                             <p></p>
@@ -266,7 +265,24 @@
 
                                                                                                                                                                                             </div>     
                                                                                                                                                                                             </div>
-                                                                                                                                                                                            </body>
-                                                                                                                                                                                            </html>
+                        </body>
+    
+    <!-- fragmento para mostrar sugerencias enviadas -->
+     <div class="container" >
+         <div class="row"  >
+             <div th:fragment="listadoSugerencias" sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-4" th:each="sugerencia : ${sugerencias}" style="width: 18rem;
+                  display: grid; grid-template-columns: repeat(3fr, 1fr); grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;">
+                 <div class="card text-bg-light mb-3" >
+                     <div class="card-header">Sugerencia</div>
+                     <div class="card-body">
+                         <h5 th:text="${sugerencia.nombre}" class="card-title"></h5>
+                         <p th:text="${sugerencia.mensaje}" class="card-text"></p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+</html>
 
                                                                                                                                                                                             
