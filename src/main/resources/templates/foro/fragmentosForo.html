@@ -2,110 +2,107 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-     <head th:replace="~{layout/plantilla :: head}">
-          <title>FORO</title>
-     </head>
-     <body>
-          <section th:fragment = "botonAgregar" class = " py-4 mb-4 bg-light">              
-               <div class ="container">
-                    <div class="row">
-                         <div class="cold-md-3">
-                             <button
-                                 type="button"
-                                 class="btn btn-primary btn-block"
-                                 data-bs-toggle="modal"
-                                 data-bs-target="#agregarForo"> Agregar Foro
-                                 
-                             </button>
-                         </div>
-                    </div>
-               </div>               
-          </section>
-         
-         <section th:fragment ="agregarForo">
-             <div id="agregarForo"
-                  class="modal fade"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                 <div class="modal-dialog modal-md">
-                     <div class="modal-content">
-                         <div class="modal-header bg-info text-white">
-                             <h5 class="modal-title">Agregar Foro</h5>
-                             <button type="button"
-                                     class="btn-close"
-                                 data-bs-dismiss="modal" aria-label="Close">
-                                         
-                             </button>
-                             <form th:action="@{/foro/guardar}"
-                                   th:object="${foro}"
-                                   method="POST"
-                                   class="was-validated"
-                                   enctype="multipart/form-data">
-                                 <div class="modal-body">
-                                     <div class="mb-3">
-                                         <label for="comentario"></label>
-                                         <input type="text"
-                                                class="form-control"
-                                                name="comentario"
-                                                required="true"></input>
-                                     </div>
-                                     <div class="mb-3">
-                                         <label for="comentario"></label>
-                                         <input type="text"
-                                                class="form-control"
-                                                name="comentario"
-                                                required="true"></input>
-                                     </div>
-                                    
-                                     
-                                 
-                             </form>
-                         
-                         </div>
-                     </div>
-                 </div>
-                 
-             </div>
-             
-         </section>
-          
-          <!--mosttarr foros de entidad Foros-->
-          <section th:fragment= "listadoForos" id="foro">
-               <div clas= "container">
-                    <div class= "row">
-                         <div class="col-md-9">
-                              <div class= "card">
-                                   <div class="card-header">
-                                        <h4>Hilos</h>
-                                   </div>
-                                   <!--div th:if="${foro != null and !foro.empty}"-->
-                                   <table class="table table-striped table-hover">
-                                        <thead class="table-dark">
-                                             <tr>
-                                                  <th>#</th>
-                                                  <th>Comentarios</th>
-                                                  <th>Publicado por</th>
-                                                  <th></th>
-                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                             <tr th:each="foro, contador : ${foros}">
-                                                  <td>[[${contador.count}]]</td>
-                                                  <td>[[${foro.comentario}]]</td>
-                                                  <td>[[${foro.usuario}]]</td>
-                                             </tr>
-                                        </tbody>
-                                   </table>
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>FORO</title>
+    </head>
+    <body>
+        <section th:fragment = "botonAgregar" class = " py-4 mb-4 bg-light">              
+            <div class ="container">
+                <div class="row">
+                    <div class="cold-md-3">
+                        <button
+                            type="button"
+                            class="btn btn-primary btn-block"
+                            data-bs-toggle="modal"
+                            data-bs-target="#agregarForo"> Agregar Foro
 
-                                   <!--/div-->
-                                   <div class="text-center p-2" th:if="${foro == null or foro.empty}">
-                                        <spam>Lista Vacia</spam>
-                                   </div>
-                              </div>
-                         </div>
+                        </button>
                     </div>
-               </div>
-          </section>
-     </body>
+                </div>
+            </div>               
+        </section>
+
+        <section th:fragment ="agregarForo">
+            <div id="agregarForo"
+                 class="modal fade"
+                 tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Agregar Foro</h5>
+                            <button 
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal" 
+                                aria-label="Close">                                         
+                            </button>                 
+                        </div>
+                        <form th:action="@{/foro/guardar}"
+                              th:object="${foro}"
+                              method="POST"
+                              class="was-validated"
+                              enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="comentario"></label>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Titulo"
+                                           required="true"></input>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                    <label for="floatingTextarea">Crear hilo</label>
+                                </div>
+                               
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form> 
+                    </div>
+                </div>        
+            </div>             
+        </section>
+
+        <!--mosttarr foros de entidad Foros-->
+        <section th:fragment= "listadoForos" id="foro">
+            <div clas= "container">
+                <div class= "row">
+                    <div class="col-md-9">
+                        <div class= "card">
+                            <div class="card-header">
+                                <h4>Hilos</h>
+                            </div>
+                            <!--div th:if="${foro != null and !foro.empty}"-->
+                            <table class="table table-striped table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Comentarios</th>
+                                        <th>Publicado por</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="foro, contador : ${foros}">
+                                        <td>[[${contador.count}]]</td>
+                                        <td>[[${foro.comentario}]]</td>
+                                        <td>[[${foro.usuario}]]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!--/div-->
+                            <div class="text-center p-2" th:if="${foro == null or foro.empty}">
+                                <spam>Lista Vacia</spam>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>
