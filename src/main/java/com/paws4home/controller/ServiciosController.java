@@ -14,7 +14,7 @@ public class ServiciosController {
    @GetMapping("/servicios")
      public String nuevaSugerencia(Model model) {
           model.addAttribute("servicios", "valor");
-          return ("/servicios");//editar
+          return ("/servicios/servicios");//editar
      }
     
 }
