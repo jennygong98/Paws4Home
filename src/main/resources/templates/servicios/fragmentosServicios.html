@@ -11,10 +11,9 @@
                      display: grid; align-items: center; ">
                 <section class="text-white mt-5" style="text-align: center; ">
                     <h3 style="margin-left: 950px">Ayuda a PAWS4HOME: Transforma Vidas Peludas con Tu Donación</h3>
-
                 </section>
                 <section class="row flex-wrap">
-                    <div class="col-sm-4 col-lg-2" style="margin-left: 1110px; margin-bottom: 335px">
+                    <div class="col-sm-4 col-lg-2" style="margin-left: 1165px; margin-bottom: 335px">
                         <a th:href="@{#}" class="btn btn-md text-white d-flex align-items-center justify-content-center" style="background-color: #96B921; height: 60px; width: 150px; font-size: 20px;">
                             <i class="fas fa-donate" style="margin-right: 15px; font-size: 24px;"></i> DONAR
                         </a>
@@ -23,12 +22,37 @@
             </section>
         </div>
 
-        <div th:fragment="descripcionServicios" style="margin-left: 40%; display: flex; align-items: flex-start;" class="container-fluid text-left my-5">
-            <div style="flex: 1;">
-                <h1>SERVICIOS</h1>
+        <!-- 1- fragmento servicios -->
+        <div th:fragment="descripcionServicios" class="container-fluid text-center" style="background-color: white; max-width: 100%; background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom-right-radius: 0px; overflow: hidden;">
+            <h1 class="mx-auto my-4 text-center" style="font-size: 40px; color: #464646;"> SERVICIOS </h1> 
+            <!-- First pair of sections -->
+            <div class="d-flex justify-content-around" >
+                <section class="text-white m-5" style="width: 450px; text-align: center; position: relative; padding-top: 40px; border: 2px solid black; margin: 0; padding: 0;">
+                    <section style="background-image: url('/imagenes/PetCity.jpg'); border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; max-width: 100%; background-size: cover; background-position: center; height: 160px;
+                             display: grid; align-items: center; border-bottom: 2px solid black; margin: 0; padding: 0;">
+                    </section>
+                    <h5 class="my-2 mx-auto text-center" style="color:#BAB86C;margin: 0;"> Halloween en la Manada Paws4Home </h5> 
+                    <p class="my-2 " style="color:#464646; font-size: 15px;text-align: justify; margin-left: 11.9%; margin-right: 11.9%;"> <br><strong>Número de teléfono:</strong> +506 2220-0325 / +506 8484-8343<br> <br>  
+                                    <strong>Ubicación:</strong> Bv. Rohmoser, 25 mt Oeste del semáforo del Parque de la Amistad, frente a la parada de Bus. <br> 10109, San José, Costa Rica <br> <br>
+                                                <strong>Horario:</strong> Lunes a Sábado de 8am a 7pm<br> <br> 
+                                                        <strong>Sitio Web:</strong> https://www.veterinariapetcitycr.com/contact-us/
+                                                                <br> </p>
+                                                                    </section>
 
-            </div>
-            </section>
-        </div>
-    </body>
-</html>
+                                                                    <section class="text-white m-5" style="width: 450px; text-align: center; position: relative; padding-top: 40px; border: 2px solid black; margin: 0; padding: 0;">
+                                                                        <section style="background-image: url('/imagenes/fogaus.jpg'); border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; max-width: 100%; background-size: cover; background-position: center; height: 160px;
+                                                                                 display: grid; align-items: center; border-bottom: 2px solid black; margin: 0; padding: 0;">
+                                                                        </section>
+                                                                        <h5 class="my-2 mx-auto text-center" style="color:#BAB86C; margin-top: 10px; margin: 0;">Feliz Año Nueva Familia Paws4Home</h5>
+                                                                        <p class="my-2 " style="font-weight: bold; color:#BAB86C; font-size: 15px;text-align: justify; margin-left: 11.9%; margin-right: 11.9%;">Programa de Educación canina a Domicilio</p>
+                                                                        <p class="my-2 " style="color:#464646; font-size: 15px;text-align: left; margin-left: 11.9%; margin-right: 11.9%;">  <br><strong>Número de teléfono:</strong> +506 2220-0325 / +506 8484-8343<br> <br>  
+                                                                                        <strong>Ubicación:</strong> San Pedro de Coronado <br>San José, Costa Rica <br> <br>
+                                                                                                    <strong>Horario:</strong> Negociable<br> <br> 
+                                                                                                            <strong>Sitio Web:</strong> https://www.fogaus.com/contacto/ 
+                                                                                                                    <br> </p>
+                                                                                                                        </section>
+
+                                                                                                                        </div>     
+                                                                                                                        </div>
+                                                                                                                        </body>
+                                                                                                                        </html>

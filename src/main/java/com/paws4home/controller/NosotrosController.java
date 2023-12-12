@@ -17,12 +17,6 @@ public class NosotrosController {
     @Autowired
     private SugerenciaService sugerenciaService;
 
-    @RequestMapping("/principal")
-    public String inicioAdoptar(Model model) {
-        model.addAttribute("attribute", "value");
-        return "/nosotros/principal";
-    }
-
     @GetMapping("/contactenos")
     public String contactenos(Model model) {
         var sugerencias= sugerenciaService.getSugerencias();

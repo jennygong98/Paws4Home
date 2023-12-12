@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="layout/plantilla :: head">
-        <!-- Agrega la siguiente línea para incluir FontAwesome -->
+        <!-- Para incluir FontAwesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
-        <!-- 1- fragmento mensaje inicial pagina contactenos -->
+        <!-- 1- fragmento de Nosotros/Contactar BannerPrincipal -->
         <div th:fragment="bannerContactenos">
-            <section style="background-image: url('/imagenes/imagenPerros2.jpg'); max-width: 98%; background-size: cover; background-position: center; height: 300px;
-                     display: grid; align-items: center; border-bottom-right-radius: 200px">
+            <section style="background-image: url('/imagenes/imagenPerros2.jpg'); max-width: 100%; background-size: cover; background-position: center; height: 300px;
+                     display: grid; align-items: center; border-bottom-right-radius: 150px">
                 <section class="text-white mt-5" style="padding-left: 50px">
                     <h3 style="margin-left: 75px">QUEREMOS ESCUCHARTE</h3>
                     <h2 style="margin-left: 120px; font-weight: bold">CONTÁCTANOS</h2>
@@ -28,8 +28,10 @@
             </section>
         </div>
 
-        <!-- 2- fragmento del mensaje sobre ubicacion y horarios -->
-        <div th:fragment="descripcionContactenos" style="margin-left: 2%; display: flex; align-items: flex-start;" class="container-fluid text-left my-5">
+        
+
+        <!-- 2- fragmento Nosotros/Contactar Descripcion de ubicacion y horarios -->
+        <div th:fragment="descripcionContactenos" style="max-width: 100%; background-size: cover; margin-left: 2%; display: flex; align-items: flex-start;" class="container-fluid text-left my-5">
             <div style="flex: 1;">
                 <h7>TE INVITAMOS A NUESTRA FUNDACIÓN</h7>
                 <h1>Ven a visitarnos</h1>
@@ -43,201 +45,228 @@
                 <P></P>
             </div>
 
-        <!-- 3- fragmento para agregar la foto lateral y los iconos de redes sociales -->
-        <div style="flex: 1;">
-            <img src="/imagenes/fundacion.jpeg" alt="Description of the image" width="500" height="250" style="margin-top: 15px; margin-left: 15%">
-                <div style="display: flex; align-items: center; margin-top: 5px; margin-left: 38%;">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com" target="_blank" style="margin-right: 15px; color: blue;">
-                        <i class="fab fa-facebook fa-2x"></i>
-                    </a>
+            <!-- 3- fragmento Nosotros/Contactar para agregar la foto lateral y los iconos de redes sociales -->
+            <div style="flex: 1; max-width: 100%; background-size: cover;">
+                <img src="/imagenes/fundacion.jpeg" alt="Description of the image" width="500" height="250" style="margin-top: 15px; margin-left: 15%">
+                    <div style="display: flex; align-items: center; margin-top: 5px; margin-left: 38%;">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com" target="_blank" style="margin-right: 15px; color: blue;">
+                            <i class="fab fa-facebook fa-2x"></i>
+                        </a>
 
-                    <!-- Twitter -->
-                    <a href="https://twitter.com" target="_blank" style="margin-right: 15px; color: #00acee;">
-                        <i class="fab fa-twitter fa-2x"></i>
-                    </a>
+                        <!-- Twitter -->
+                        <a href="https://twitter.com" target="_blank" style="margin-right: 15px; color: #00acee;">
+                            <i class="fab fa-twitter fa-2x"></i>
+                        </a>
 
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com" target="_blank" style="margin-right: 15px; color: #e4405f;">
-                        <i class="fab fa-instagram fa-2x"></i>
-                    </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com" target="_blank" style="margin-right: 15px; color: #e4405f;">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
 
-                    <a href="https://www.gmail.com" target="_blank" style="color: #DB4437;">
-                        <i class="fab fa-google fa-2x"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4- fragmento sobre NUESTRA HISTORIA -->
-        <div th:fragment="nuestraHistoriaContactenos" style="margin-left: 50px; text-align: justify; max-width: 89%; justify-content: center; align-items: center;">
-            <h3 style="margin-left: 35%; margin-bottom: 3%; margin-top: 5%; background-color: #96B921; height: 60px; width: 300px; display: flex; justify-content: center; align-items: center; "> NUESTRA HISTORIA </h3>
-
-            <p > La fundación PAWS4HOME es un refugio especializado en la adopción de animales y en brindarles un hogar amoroso cuando ya no se pueden ser cuidados por sus dueños.</p>
-            <p> Esta fundación nació dado a que hace varios años, en un pequeño pueblo llamado Pital ubicado en San Carlos, un grupo de ammigos y amantes de los animales se reunió para
-                abordar un pequeño problema que habían notado en su comunidad. Había un creciente número de mascotas abandonadas y los refugios locales, estaban soprepasados.
-                La triste realidad era que muchas de estas mascotas abandonadas y los refigios locales estaban sobrepasados. La triste realidad era que muchas de estas mascotas nunca encontraban
-                un nuevo hogar y terminaban sufriendo en las calles o siendo sacrificadas. </p>
-
-            <p> La idea de crear una fundación que se centrara exclusivamente en ayudar a estos animales desamparados comenzó a tomar forma. Fue un proceso largo y desafiante, pero el grupo estaba lleno de determinación
-                y pasión por su causa. Después de meses de planificación y recaudación de fondos, nació la Fundación PAWS4HOME. <p>
-
-            <p> El nombre "PAWS4HOME" fue elegido cuidadosamente para representar su misión. "PAWS" hacia referencua a las huellas de los animales, símbolo de la compañía y el amor que ofrecen, y "4HOME" reflejaba
-                su compromiso de encontrar un hogar para cada mascota. El lema de la fundación se convirtió en "Dando un Hogar a las Huellas Desamparadas". </p>
-
-            <p> El primer refugio de PAWS4HOME comenzó en un pequeño edificio que habían alquilado. Con la ayuda de voluntarios apasionados,veterinarios locales y donaciones generosas, comenzaron a rescatar, cuidar y rehabilitar
-                a los animales abandonados. Cada miembro del equipo se esforzó por crear un ambiente cálido y amoroso para los animales, lleno de cariño y atención. </p>
-
-            <p> A medida que la fundación creció, también lo hizo su impacto en la comunidad. No solo estaban encontrando hogares amorosos para los animales, sino que también se dedicaron a la educación sobre la importancia de la adopción
-                responsable y el cuidado adecuado de las mascotas. </p> 
-
-            <p> Con el tiempo, PAWS4HOME pudo adquirir un terreno más grande y contruir un refugio más grande y moderno. El refugio se convirtió en un lugar acogedor, con áreas de juego para los animales y espacios de reunión donde 
-                las familias podían conocer a sus futuros compañeros peludos. </p>
-
-            <p> Hoy en día, la Fundación PAWS4HOME es una organización reconocida y respetada en todo el país. Han encontrado hogares para miles de animales y su compromiso con la causa de las mascotas desamparadas sigue siendo 
-                inquebrantable. Además de su refugio, ofrecen programas de capacitación, servicios de atención veterinaria y actividades comunitarias para crear conciencia sobre la adopción y el cuidado responsable de las mascotas.</p>
-
-            <p> La Fundación PAWS4HOME es un ejemplo inspirador de lo que la pasión, el compromiso y el amor por los animales pueden lograr. Han transformado vidas tanto de los animales rescatados como de las familias que han encontrado
-                en ellos a sus fieles compañeros. Su historia es un recordatorio de la importancia de cuidar y proteger a las mascotas desamparadas y cómo un pequeño grupo de personas puede marcar una gran diferencia en el mundo.</p>
-        </div>
-        
-                   <section class="row flex-wrap">
-                    <div class="col-sm-4 col-lg-2" style="margin-left: 40px">
-                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style="background-color: #ED7333; height: 60px; width: 150px">
-                            <i class="fas"></i> SUGERENCIA
+                        <a href="https://www.gmail.com" target="_blank" style="color: #DB4437;">
+                            <i class="fab fa-google fa-2x"></i>
                         </a>
                     </div>
-                    <div class="col-sm-4 col-lg-2 " style="margin-left: 40px;">
-                        <a th:href="@{#}" class="btn btn-md fas text-white d-flex align-items-center justify-content-center" style="background-color: #F5B333; height: 60px; width: 150px">
-                            <i class="fas"></i> ESCRIBENOS
-                        </a>
-                    </div>
-                </section>
-        
-        
-        <section class="row flex-wrap" style="width: 18rem; display: grid; grid-template-columns: repeat(2, 1fr);                             grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;"> 
-            <div class="col-sm-4 col-lg-2">
-                <div th:fragment="cuadrosSugerenciaContactenos" class="card" style="width: 500px; height: 300px; margin-left: auto; margin-right: auto;">
-                    <h5 class="card-header" style="text-align: center;">Sugerencias</h5>
-                    <div class="card-body">
-                        <form method="POST" th:action="@{/nosotros/guardar}" th:object="${sugerencia}" >
-                                <input type="text" class="form-control" name="nombre" required="true" placeholder="Ingrese su nombre">
-                                <textarea type="text" class="form-control" name="mensaje" required="true" placeholder="Escriba su mensaje" style="margin-top: 3%; height: 140px; width: 100%; resize: none;"></textarea>
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary m-2">Enviar</button>
-                                </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-4 col-lg-2">
-                <div th:fragment="cuadrosSugerenciaContactenos" class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto; margin-top: 3%;">
-                    <h5 class="card-header" style="text-align: center;">Contáctenos</h5>
-                    <div class="card-body">
-                        <form method="POST" th:action="@{Sugerencia}" th:object="${adoptar}" >
-                            <input type="text" class="form-control" name="nombre" required="true" placeholder="Ingrese su nombre">
-                                <input type="text" class="form-control" name="telefon" required="true" placeholder="Ingrese su número de telefono" style="margin-top: 3%;">
-                                    <input type="text" class="form-control" name="correo" required="true" placeholder="Ingrese su correo electrónico" style="margin-top: 3%;">
-                                        <textarea type="text" class="form-control" name="mensaje" required="true" placeholder="Escriba su mensaje" style="margin-top: 3%; height: 140px; width: 100%; resize: none;"></textarea>
-                                        <div class="text-center">
-                                    <button type="submit" class="btn btn-primary m-2">Enviar</button>
-                                </div>
-                                        </form>
-                                        </div>
-                                        </div>
-                                        </div>
-
-                                        </section>
-
-
-        <!-- 5- fragmento mensaje inicial pagina Nosotros principal -->
-        <div th:fragment="bannerPrincipal">
-            <section style="background-image: url('/imagenes/fundacion2.png'); max-width: 98%; background-size: cover; background-position: center; height: 500px;
-                display: grid; align-items: center; border-bottom-right-radius: 155px">
-                <section class="text-white mt-5" style="text-align: justify; padding-left: 40px; margin-bottom: 10%; max-width: 450px">
-                  
-                    <h7>EL ARTE DE RESCATAR PELUDITOS</h7>
-                    <h1>PAWS4HOME</h1>
-                    <p></p>
-                    <P>Buscamos proteger la vida de perros y gatos en estado de maltrato y abandono. Les brindamos alimentos, medicamentos y albergue, con el fin de mejorar su calidad de vida y conseguirles un hogar.</P>
-                </section>
-            </section>
-        </div>
-        
-        <!-- 6- framento Apoya nuestra labor NosotrosPrincipal-->
-        <div th:fragment="ApoyaNuestraLabor" style=" display: flex; align-items: flex-start;" class="container-fluid text-left my-5">
-            <div style="text-align: center;">
-                <h2 style="color: #707070;"> Apoya Nuestra Labor</h2>
-                <p></p>
-                    <a th:href="@{#}" class="btn btn-md text-white d-flex align-items-center justify-content-center" style="background-color: #96B921; height: 60px; width: 300px; font-size: 20px; margin-left: 40%">
-                        <i class="fas fa-donate" style="margin-right: 5px; font-size: 24px;"></i> HAZ TÚ DONACIÓN AQUÍ
-                    </a>
-                <p></p>
-                <h4 style="color: #938888;">PUEDES HACER TÚ APORTE POR ESTOS MEDIOS</h4>
-                <!-- Images section -->
-                <div style="display: flex; justify-content: space-around; ">
-                  <img src="/imagenes/Paypal.png" alt="Paypal" style="width: 300px; height: 150px; margin-right: 30px;">
-                  <img src="/imagenes/Nequi.png" alt="Nequi" style="width: 315px; height: 150px; margin-right: 30px;">
-                  <img src="/imagenes/Daviplata.png" alt="Daviplata" style="width: 320px; height: 150px;">
-                </div>   
-                <p style="color: yellowgreen">................................................................................................................................................................................................................................................................................................................................................................................................................................................</p>
-                <h6 style="color: #938888;">TRABAJANDO EN PRO DE LOS ANIMALES</h6>
-                <h2 style="font-weight: bold;">Nuestra misión</h2>
-
-                <div style="display: flex; margin-top: 2%; ">
-                    <div style="width: 48%; max-width: 450px; text-align: center;margin-left: 18%; margin-right: 8%">
-                        <p style="font-weight: bold; text-align: left; font-size: 18px;">LO QUE HACEMOS</p>
-                        <p style="text-align: justify; ">Los animales que llegan a nuestra fundación reciben atención veterinaria completa, incluyendo esterilización, 
-                        vacunación, desparacitación, identificación con microship y cualquier tratamiento necesario para garantizar su 
-                        bienestar hasta que logremos encontrarles un hogar que los cuide de por vida.</p>
-                    </div>
-                    <div style="width: 48%; max-width: 450px; text-align: center;">
-                        <p style="font-weight: bold; text-align: left; font-size: 18px;">LO QUE QUEREMOS</p>
-                        <p style="text-align: justify;">Promovermos la sensibilización colectiva fomentando la esterilización, el respeto a la vida, el NO al maltrato animal
-                        y la adopción responsable y soñamos con convertirnos en una organización líder en la protección y preservación de los animales
-                        que son víctimas del maltrato y la indiferencia. Además nuestro deseo es que siempre sean amados y ser un hogar para ellos, para
-                        aquellos que necesiten ponerlos en adopción por motivos personales.</p>
-                    </div>
-                </div>
             </div>
         </div>
-        
- <!-- ... Fragmento, seccion del gato ... -->
-        <div th:fragment="HemosRescatado" class="container-fluid text-center" style="background-image: url('/imagenes/Gato.png'); max-width: 98%; background-size: cover; background-position: center; height: 650px; display: flex; align-items: center; justify-content: center; border-bottom-right-radius: 0px; position: relative; overflow: hidden;">
-            <section class="text-white m-5" style="background-color: #FFFFFF; max-width: 50%; position: absolute; left: 55%; height: 375px; width: 500px;">
-            <h4 style="margin-top: 3%; color: #000000; ">Hemos rescatado más de 550 Peludos</h4>
-            <p style="text-align: justify; margin-right: 5%; margin-left: 5%; margin-top: 5%; color: #4B4242;">Hemos cambiado su mundo y ellos el nuestro. Muchos han sido felizmente adoptados, otros nos han enseñado a no darnos por vencidos y son
-            un ejemplo de perseverancia y gratitud. Algunos ya no nos acompañan, pero nos queda la sensación de haberles permitido conocer la bondad humana. 
-            Y están los que habitan el refugio y que siguen esperando una oportunidad para tener una familia y llenar sus hogares de alegría y amor. <br> Puede que no salvemos millones de animales de la calle que existen, pero ayudaremos a los que estén a nuestro alcance, a los que el universo nos coloque en el camino.></p>      
-            </section>
-        </div>
-        
-        <div th:fragment="HemosRescatado" class="container-fluid text-center" style="background-color: #474747; max-width: 98%; background-size: cover; background-position: center; height: 650px; display: flex; align-items: center; justify-content: center; border-bottom-right-radius: 0px; position: relative; overflow: hidden;">
-            <section class="text-white m-5" style="background-color: #FFFFFF; max-width: 50%; position: absolute; left: 55%; height: 375px; width: 500px;">
-            <h4 style="margin-top: 3%; color: #000000; ">Hemos rescatado más de 550 Peludos</h4>
-            <p style="text-align: justify; margin-right: 5%; margin-left: 5%; margin-top: 5%; color: #4B4242;">Hemos cambiado su mundo y ellos el nuestro. Muchos han sido felizmente adoptados, otros nos han enseñado a no darnos por vencidos y son
-            un ejemplo de perseverancia y gratitud. Algunos ya no nos acompañan, pero nos queda la sensación de haberles permitido conocer la bondad humana. 
-            Y están los que habitan el refugio y que siguen esperando una oportunidad para tener una familia y llenar sus hogares de alegría y amor. <br> Puede que no salvemos millones de animales de la calle que existen, pero ayudaremos a los que estén a nuestro alcance, a los que el universo nos coloque en el camino.></p>      
-            </section>
-        </div>
 
-     <!-- fragmento para mostrar sugerencias enviadas -->
-     <div class="container">
-         <div class="row" >
-             <div th:fragment="listadoSugerencias" class="col-md-4" th:each="sugerencia : ${sugerencias}" style="width: 18rem;
-                  display: grid; grid-template-columns: repeat(3fr, 1fr); grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;">
-                 <div class="card text-bg-secondary mb-3" >
-                     <div class="card-header">Sugerencia</div>
-                     <div class="card-body">
-                         <h5 th:text="${sugerencia.nombre}" class="card-title"></h5>
-                         <p th:text="${sugerencia.mensaje}" class="card-text"></p>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
+        <!-- 4- fragmento Nosotros/Contactar sobre NUESTRA HISTORIA -->
+        <div th:fragment="nuestraHistoriaContactenos" style=" max-width: 100%; background-size: cover;background-position: center; text-align: justify; max-width: 100%; justify-content: center; align-items: center;">
+            <h3 class="mx-auto my-5 text-center" style="background-color: #96B921; height: 60px; width: 300px; display: flex; justify-content: center; align-items: center;"> NUESTRA HISTORIA </h3>
+            <p style="margin-left: 70px; margin-right: 70px;" > La fundación PAWS4HOME es un refugio especializado en la adopción de animales y en brindarles un hogar amoroso cuando ya no se pueden ser cuidados por sus dueños.
+                <br> <br> Esta fundación nació dado a que hace varios años, en un pequeño pueblo llamado Pital ubicado en San Carlos, un grupo de ammigos y amantes de los animales se reunió para
+                        abordar un pequeño problema que habían notado en su comunidad. Había un creciente número de mascotas abandonadas y los refugios locales, estaban soprepasados.
+                        La triste realidad era que muchas de estas mascotas abandonadas y los refigios locales estaban sobrepasados. La triste realidad era que muchas de estas mascotas nunca encontraban
+                        un nuevo hogar y terminaban sufriendo en las calles o siendo sacrificadas. 
+                        <br> <br> La idea de crear una fundación que se centrara exclusivamente en ayudar a estos animales desamparados comenzó a tomar forma. Fue un proceso largo y desafiante, pero el grupo estaba lleno de determinación
+                                y pasión por su causa. Después de meses de planificación y recaudación de fondos, nació la Fundación PAWS4HOME. 
+                                <br> <br> El nombre "PAWS4HOME" fue elegido cuidadosamente para representar su misión. "PAWS" hacia referencua a las huellas de los animales, símbolo de la compañía y el amor que ofrecen, y "4HOME" reflejaba
+                                        su compromiso de encontrar un hogar para cada mascota. El lema de la fundación se convirtió en "Dando un Hogar a las Huellas Desamparadas". 
+                                        <br> <br> El primer refugio de PAWS4HOME comenzó en un pequeño edificio que habían alquilado. Con la ayuda de voluntarios apasionados,veterinarios locales y donaciones generosas, comenzaron a rescatar, cuidar y rehabilitar
+                                                a los animales abandonados. Cada miembro del equipo se esforzó por crear un ambiente cálido y amoroso para los animales, lleno de cariño y atención. 
+                                                <br> <br> A medida que la fundación creció, también lo hizo su impacto en la comunidad. No solo estaban encontrando hogares amorosos para los animales, sino que también se dedicaron a la educación sobre la importancia de la adopción
+                                                        responsable y el cuidado adecuado de las mascotas. 
+                                                        <br> <br> Con el tiempo, PAWS4HOME pudo adquirir un terreno más grande y contruir un refugio más grande y moderno. El refugio se convirtió en un lugar acogedor, con áreas de juego para los animales y espacios de reunión donde 
+                                                                las familias podían conocer a sus futuros compañeros peludos. 
+                                                                <br> <br> Hoy en día, la Fundación PAWS4HOME es una organización reconocida y respetada en todo el país. Han encontrado hogares para miles de animales y su compromiso con la causa de las mascotas desamparadas sigue siendo 
+                                                                        inquebrantable. Además de su refugio, ofrecen programas de capacitación, servicios de atención veterinaria y actividades comunitarias para crear conciencia sobre la adopción y el cuidado responsable de las mascotas. 
+                                                                        <br> <br> La Fundación PAWS4HOME es un ejemplo inspirador de lo que la pasión, el compromiso y el amor por los animales pueden lograr. Han transformado vidas tanto de los animales rescatados como de las familias que han encontrado
+                                                                                en ellos a sus fieles compañeros. Su historia es un recordatorio de la importancia de cuidar y proteger a las mascotas desamparadas y cómo un pequeño grupo de personas puede marcar una gran diferencia en el mundo.</p>
+                                                                                </div>     
 
-    </body>
-</html>
+
+                                                                                <!-- 5- fragmento Nosotros/Contactar Espacio para sugerencia y contactarnos -->
+                                                                                <div th:fragment="cuadrosSugerenciaContactenos" style=" text-align: justify; max-width: 100%; justify-content: center; align-items: center;">    
+                                                                                    <section class="row flex-wrap" style="width: 18rem; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 55px; width: 70%; margin: 0 auto; margin-top: 35px;"> 
+                                                                                        <div class="col-sm-4 col-lg-2">
+                                                                                            <div  class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto;">
+                                                                                                <h5 class="card-header" style="text-align: center;">Sugerencias</h5>
+                                                                                                <div class="card-body">
+                                                                                                    <!--<form method="POST" th:action="@{Sugerencia}" th:object="${adoptar}" >-->
+                                                                                                        <form method="POST" th:action="@{/nosotros/guardar}" th:object="${sugerencia}" >
+                                                                                                        <input type="text" class="form-control" name="nombre" required="true" placeholder="Ingrese su nombre">
+                                                                                                            <textarea type="text" class="form-control" name="mensaje" required="true" placeholder="Escriba su mensaje" style="margin-top: 3%; height: 245px; width: 100%; resize: none;"></textarea>
+                                                                                                            <div class="text-center" style="margin-top: 1.5%;">
+                                                                                                                <a href="#" class="btn btn-primary">ENVIAR</a>
+                                                                                                            </div>
+                                                                                                    </form>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="col-sm-4 col-lg-2">
+                                                                                            <div class="card" style="width: 500px; height: 405px; margin-left: auto; margin-right: auto; margin-top: 3%;">
+                                                                                                <h5 class="card-header" style="text-align: center;">Contáctenos</h5>
+                                                                                                <div class="card-body">
+                                                                                                    <form method="POST" th:action="@{Sugerencia}" th:object="${adoptar}" >
+                                                                                                        <input type="text" class="form-control" name="nombre" required="true" placeholder="Ingrese su nombre">
+                                                                                                            <input type="text" class="form-control" name="telefon" required="true" placeholder="Ingrese su número de telefono" style="margin-top: 3%;">
+                                                                                                                <input type="text" class="form-control" name="correo" required="true" placeholder="Ingrese su correo electrónico" style="margin-top: 3%;">
+                                                                                                                    <textarea type="text" class="form-control" name="mensaje" required="true" placeholder="Escriba su mensaje" style="margin-top: 3%; height: 140px; width: 100%; resize: none;"></textarea>
+                                                                                                                    <div class="text-center" style="margin-top: 1.5%;">
+                                                                                                                        <a href="#" class="btn btn-primary">ENVIAR</a>
+                                                                                                                    </div>
+                                                                                                                    </form>
+                                                                                                                    </div>
+                                                                                                                    </div>
+                                                                                                                    </div>
+                                                                                                                    </section>
+                                                                                                                    </div>
+
+                                                                                                                    <!-- 6- fragmento Nosotros/Nosotros BannerPrincial -->
+                                                                                                                    <div th:fragment="bannerPrincipal">
+                                                                                                                        <section style="background-image: url('/imagenes/fundacion2.png'); max-width: 100%; background-size: cover; background-position: center; height: 500px;
+                                                                                                                                 display: grid; align-items: center; border-bottom-right-radius: 150px">
+                                                                                                                            <section class="text-white mt-5" style="text-align: justify; padding-left: 40px; margin-bottom: 10%; max-width: 450px">
+
+                                                                                                                                <h7>EL ARTE DE RESCATAR PELUDITOS</h7>
+                                                                                                                                <h1>PAWS4HOME</h1>
+                                                                                                                                <p></p>
+                                                                                                                                <P>Buscamos proteger la vida de perros y gatos en estado de maltrato y abandono. Les brindamos alimentos, medicamentos y albergue, con el fin de mejorar su calidad de vida y conseguirles un hogar.</P>
+                                                                                                                            </section>
+                                                                                                                        </section>
+                                                                                                                    </div>
+
+                                                                                                                    <!-- 6- framento Nosotros/Nosotros Apoya nuestra labor NosotrosPrincipal-->
+                                                                                                                    <div th:fragment="ApoyaNuestraLabor" style=" display: flex; align-items: flex-start;" class="container-fluid text-left my-5">
+                                                                                                                        <div style="text-align: center;">
+                                                                                                                            <h2 style="color: #707070;"> Apoya Nuestra Labor</h2>
+                                                                                                                            <p></p>
+                                                                                                                            <a th:href="@{#}" class="btn btn-md text-white d-flex align-items-center justify-content-center" style="background-color: #96B921; height: 60px; width: 300px; font-size: 20px; margin-left: 40%">
+                                                                                                                                <i class="fas fa-donate" style="margin-right: 5px; font-size: 24px;"></i> HAZ TÚ DONACIÓN AQUÍ
+                                                                                                                            </a>
+                                                                                                                            <p></p>
+                                                                                                                            <h4 style="color: #938888;">PUEDES HACER TÚ APORTE POR ESTOS MEDIOS</h4>
+                                                                                                                            <!-- Images section -->
+                                                                                                                            <div style="display: flex; justify-content: space-around; ">
+                                                                                                                                <img src="/imagenes/Paypal.png" alt="Paypal" style="width: 300px; height: 150px; margin-right: 30px;">
+                                                                                                                                    <img src="/imagenes/Nequi.png" alt="Nequi" style="width: 315px; height: 150px; margin-right: 30px;">
+                                                                                                                                        <img src="/imagenes/Daviplata.png" alt="Daviplata" style="width: 320px; height: 150px;">
+                                                                                                                                            </div>   
+                                                                                                                                            <p style="color: yellowgreen">................................................................................................................................................................................................................................................................................................................................................................................................................................................</p>
+                                                                                                                                            <h6 style="color: #938888;">TRABAJANDO EN PRO DE LOS ANIMALES</h6>
+                                                                                                                                            <h2 style="font-weight: bold;">Nuestra misión</h2>
+
+                                                                                                                                            <div style="display: flex; margin-top: 2%; ">
+                                                                                                                                                <div style="width: 48%; max-width: 450px; text-align: center;margin-left: 18%; margin-right: 8%">
+                                                                                                                                                    <p style="font-weight: bold; text-align: left; font-size: 18px;">LO QUE HACEMOS</p>
+                                                                                                                                                    <p style="text-align: justify; ">Los animales que llegan a nuestra fundación reciben atención veterinaria completa, incluyendo esterilización, 
+                                                                                                                                                        vacunación, desparacitación, identificación con microship y cualquier tratamiento necesario para garantizar su 
+                                                                                                                                                        bienestar hasta que logremos encontrarles un hogar que los cuide de por vida.</p>
+                                                                                                                                                </div>
+                                                                                                                                                <div style="width: 48%; max-width: 450px; text-align: center;">
+                                                                                                                                                    <p style="font-weight: bold; text-align: left; font-size: 18px;">LO QUE QUEREMOS</p>
+                                                                                                                                                    <p style="text-align: justify;">Promovermos la sensibilización colectiva fomentando la esterilización, el respeto a la vida, el NO al maltrato animal
+                                                                                                                                                        y la adopción responsable y soñamos con convertirnos en una organización líder en la protección y preservación de los animales
+                                                                                                                                                        que son víctimas del maltrato y la indiferencia. Además nuestro deseo es que siempre sean amados y ser un hogar para ellos, para
+                                                                                                                                                        aquellos que necesiten ponerlos en adopción por motivos personales.</p>
+                                                                                                                                                </div>
+                                                                                                                                            </div>
+                                                                                                                                            </div>
+                                                                                                                                            </div>
+
+                                                                                                                                            <!-- ... Fragmento Nosotros/Nosotros seccion del gato ... -->
+                                                                                                                                            <div th:fragment="HemosRescatado" class="container-fluid text-center" style="background-image: url('/imagenes/Gato.png'); max-width: 100%; background-size: cover; background-position: center; height: 650px; display: flex; align-items: center; justify-content: center; border-bottom-right-radius: 0px; position: relative; overflow: hidden;">
+                                                                                                                                                <section class="text-white m-5" style="background-color: #FFFFFF; max-width: 50%; position: absolute; left: 55%; height: 375px; width: 500px;">
+                                                                                                                                                    <h4 style="margin-top: 3%; color: #000000; ">Hemos rescatado más de 550 Peludos</h4>
+                                                                                                                                                    <p style="text-align: justify; margin-right: 5%; margin-left: 5%; margin-top: 5%; color: #4B4242;">Hemos cambiado su mundo y ellos el nuestro. Muchos han sido felizmente adoptados, otros nos han enseñado a no darnos por vencidos y son
+                                                                                                                                                        un ejemplo de perseverancia y gratitud. Algunos ya no nos acompañan, pero nos queda la sensación de haberles permitido conocer la bondad humana. 
+                                                                                                                                                        Y están los que habitan el refugio y que siguen esperando una oportunidad para tener una familia y llenar sus hogares de alegría y amor. <br> Puede que no salvemos millones de animales de la calle que existen, pero ayudaremos a los que estén a nuestro alcance, a los que el universo nos coloque en el camino.></p>      
+                                                                                                                                                </section>
+                                                                                                                                            </div>
+
+                                                                                                                                            <!-- ... Fragmento Nosotros/Nosotros HemosRescatado ... -->
+                                                                                                                                            <div th:fragment="HemosRescatado" class="container-fluid text-center" style="background-color: #474747; max-width: 100%; background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom-right-radius: 0px; overflow: hidden;">
+                                                                                                                                                <h5 class="text-white mx-auto my-4 text-center" style="color: #ED7333;"> NECESITAMOS TÚ AYUDA </h5> 
+                                                                                                                                                <h2 class="text-white text-center" style="color: #ED7333;"> Haz parte del cambio </h2> 
+                                                                                                                                                <!-- First pair of sections -->
+                                                                                                                                                <div class="d-flex justify-content-around" >
+                                                                                                                                                    <section class="text-white m-5" style="width: 450px; text-align: center; position: relative; padding-top: 40px;">
+                                                                                                                                                        <i class="fas fa-home" style="font-size: 35px; color: #E84990; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);"></i>
+                                                                                                                                                        <p style="margin-right: 5%; margin-left: 5%; margin-top: 5%;">Te invitamos a nuestras jornadas de adopción o visita la fundación para que conozcas a tu alma gemela.
+                                                                                                                                                            Todos nuestros peludos son entregados en óptimas condiciones de salud a adoptantes responsables que se comprometan a cuidarlos por el resto de sus vidas</p>
+                                                                                                                                                    </section>
+
+                                                                                                                                                    <section class="text-white m-5" style="width: 450px; text-align: center; position: relative; padding-top: 40px;">
+                                                                                                                                                        <i class="fas fa-donate" style="font-size: 35px; color: #E84990; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);"></i>
+                                                                                                                                                        <p style="margin-right: 5%; margin-left: 5%; margin-top: 5%;">Puedes donar desde alimentos y medicinas hasta cobijas o tejas para la adecuación del refugio.
+                                                                                                                                                            También puedes compartir tiempo con los peluditos, ayudarnos en la fundación o hacer donaciones.</p>
+                                                                                                                                                    </section>
+
+                                                                                                                                                </div>
+
+                                                                                                                                                <div class="d-flex justify-content-around">
+                                                                                                                                                    <section class="text-white m-5" style="width: 450px; margin-top: 20px; text-align: center; position: relative; padding-top: 40px;">
+                                                                                                                                                        <i class="fas fa-paw" style="font-size: 35px; color:#E84990; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);"></i>
+                                                                                                                                                        <p style="margin-right: 5%; margin-left: 5%; margin-top: 5%;">Da un adopción cuando ya no tienes otra opción para que ellos puedan encontrar un hogar donde van a ser queridos y cuidados.</p>
+                                                                                                                                                    </section>
+
+                                                                                                                                                    <section class="text-white m-5" style="width: 450px; margin-top: 20px; text-align: center; position: relative; padding-top: 40px;">
+                                                                                                                                                        <i class="fas fa-users" style="font-size: 35px; color:#E84990; position: absolute; top: 10px; left: 50%; transform: translateX(-50%);"></i>
+                                                                                                                                                        <p style="margin-right: 5%; margin-left: 5%; margin-top: 5%;">Comparte, participa y apoya las jornadas de adopción y nuestros eventos como caminatas y jornadas de baño. Ayúdanos a promover
+                                                                                                                                                            las jornadas de esterilización gratuitas o de bajo costo que compartimos en nuestras redes.</p>
+                                                                                                                                                    </section>
+                                                                                                                                                </div>
+
+                                                                                                                                                <section class="text-white" style="background-color: #96B921; width: 450px; text-align: center; position: relative; padding-top: 15px;">
+                                                                                                                                                    <h5 class="text-white mx-auto text-center" style="color: #ED7333;"> NECESITAMOS TÚ AYUDA </h5> 
+                                                                                                                                                    <p style="margin-right: 5%; margin-left: 5%; margin-top: 5%;">Queremos cada día poder ayudar a más y más peludos, es por eso que creamos los Hogares Tepa.
+                                                                                                                                                        Si puedes abrirle un espacio en tú hogar de forma temporal a uno de nuestros peludos, te invitamos a inscribirte.</p>
+                                                                                                                                                </section>      
+                                                                                                                                            </div>
+
+
+                                                                                                                                            <!-- ... Fragmento Nosotros/Nosotros BLOG ... -->     
+                                                                                                                                            <div th:fragment="conoceNuestraLabor" class="container-fluid text-center" style="background-color: white; max-width: 100%; background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border-bottom-right-radius: 0px; overflow: hidden;">
+                                                                                                                                                <h5 class="mx-auto my-4 text-center" style="color: #464646;"> CONOCE MÁS DE NUESTRA LABOR </h5> 
+                                                                                                                                                <h2 class="text-center" style="color: #464646;"> BLOG </h2> 
+                                                                                                                                                <!-- First pair of sections -->
+                                                                                                                                                <div class="d-flex justify-content-around" >
+                                                                                                                                                    <section class="text-white m-5" style="width: 450px; text-align: center; position: relative; padding-top: 40px; border: 2px solid black; margin: 0; padding: 0;">
+                                                                                                                                                        <section style="background-image: url('/imagenes/HalloweenEnManada.png'); max-width: 100%; background-size: cover; background-position: center; height: 156px;
+                                                                                                                                                                 display: grid; align-items: center; border-bottom: 2px solid black; margin: 0; padding: 0;">
+                                                                                                                                                        </section>
+                                                                                                                                                        <h5 class="my-2 mx-auto text-center" style="color:#464646;margin: 0;"> Halloween en la Manada Paws4Home </h5> 
+                                                                                                                                                        <p class="my-2 " style="color:#464646; font-size: 15px;text-align: justify; margin-left: 11.9%; margin-right: 11.9%;"> <strong>Nov 3, 2021</strong> <br> <br>  
+                                                                                                                                                                    En la Fundación Tepa celebramos todos los días la oportunidad de poder compartir nuestras vidas con perritos tan bellos, pero
+                                                                                                                                                                    también aprovechamos las fechas especiales para poder compartir con la manada; como en este caso el 31 de Octubre, un día especial
+                                                                                                                                                                    que vivimos... <br> </p>
+                                                                                                                                                                        </section>
+
+                                                                                                                                                                        <section class="text-white m-5" style="width: 450px; text-align: center; position: relative; padding-top: 40px; border: 2px solid black; margin: 0; padding: 0;">
+                                                                                                                                                                            <section style="background-image: url('/imagenes/FelizAnioNuevaFamilia.png'); max-width: 100%; background-size: cover; background-position: center; height: 156px;
+                                                                                                                                                                                     display: grid; align-items: center; border-bottom: 2px solid black; margin: 0; padding: 0;">
+                                                                                                                                                                            </section>
+                                                                                                                                                                            <h5 class="my-2 mx-auto text-center" style="color:#464646; margin-top: 10px; margin: 0;">Feliz Año Nueva Familia Paws4Home</h5> 
+                                                                                                                                                                            <p class="my-2 " style="color:#464646; font-size: 15px;text-align: justify; margin-left: 11.9%; margin-right: 11.9%;"> <strong>Ene 4, 2021</strong> <br> <br>  
+                                                                                                                                                                                        Familia Tepa: Como todos los años, hacemos un balance de lo que ha sido el año de labores. Este 2020 ha sido de grandes desafíos para todos, hemos venido 
+                                                                                                                                                                                        enfrentando una situación sin precedentes, y eso también ha marcado a muchos animales domésticos.  <br></p> 
+                                                                                                                                                                                            </section>
+
+                                                                                                                                                                                            </div>     
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                            </body>
+                                                                                                                                                                                            </html>
+
+                                                                                                                                                                                            
